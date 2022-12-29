@@ -1,7 +1,8 @@
-import Benefits from "../../components/Benefits";
-import Hero from "../../components/Hero";
-import Team from "../../components/Team";
-import Testimonials from "../../components/Testimonials";
+import Benefits from "../../components/blocks/Benefits";
+import CTA from "../../components/blocks/CTA";
+import Hero from "../../components/blocks/Hero";
+import Team from "../../components/blocks/Team";
+import Testimonials from "../../components/blocks/Testimonials";
 
 export default function Page() {
   return (
@@ -10,6 +11,7 @@ export default function Page() {
     <Benefits />
     <Testimonials />
     <Team />
+    <CTA />
     </>
   )
 }

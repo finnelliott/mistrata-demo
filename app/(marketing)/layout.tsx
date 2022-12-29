@@ -1,6 +1,6 @@
-import DemoBanner from "../../components/DemoBanner"
-import Footer from "../../components/Footer"
-import Navigation from "../../components/Navigation"
+import DemoBanner from "../../components/blocks/DemoBanner"
+import Footer from "../../components/globals/Footer"
+import Navigation from "../../components/globals/Navigation"
 
 export default function MarketingLayout({
   children,
