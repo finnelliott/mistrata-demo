@@ -106,7 +106,7 @@ const CTA = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-[4/3]">
                     <Image src={image.url} alt={image.alt} fill={true} className="object-cover" />
-                    <div className="p-4 flex flex-col overflow-hidden w-full h-min z-10 absolute bottom-0 left-0 right-0 bg-white bg-opacity-10 border border-white border-opacity-50 backdrop-blur-md">
+                    <div className="p-4 flex flex-col overflow-hidden w-full h-min z-10 absolute bottom-0 left-0 right-0 bg-white bg-opacity-10 border-t border-white border-opacity-50 backdrop-blur-md">
                         {/* Rating */}
                         <div className="flex flex-row mt-2 mb-4 flex-none">
                             {Array(testimonials[sliderIndex].rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-white"/>))}

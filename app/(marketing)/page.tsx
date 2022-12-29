@@ -1,5 +1,6 @@
 import Benefits from "../../components/blocks/Benefits";
 import CTA from "../../components/blocks/CTA";
+import FAQs from "../../components/blocks/FAQs";
 import Hero from "../../components/blocks/Hero";
 import Team from "../../components/blocks/Team";
 import Testimonials from "../../components/blocks/Testimonials";
@@ -12,6 +13,7 @@ export default function Page() {
     <Testimonials />
     <Team />
     <CTA />
+    <FAQs />
     </>
   )
 }
