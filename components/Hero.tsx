@@ -73,15 +73,14 @@ const Hero = () => {
                 
             </div>
             {/* image */}
-            <div className="relative col-span-2 lg:col-span-4 aspect-video z-20 bg-transparent">
+            <div className="relative aspect-video z-20 bg-transparent">
                 <div className="absolute top-0 left-0 aspect-video w-full bg-gradient-to-t from-black to-white z-20 opacity-10"></div>
                 <Image
                     src={block.image.url}
-                    width={block.image.width}
-                    height={block.image.height}
+                    fill={true} 
+                    className="object-cover"
                     alt={block.image.alt}
                     priority={true}
-                    className="z-10"
                 />
             </div>
         </div>

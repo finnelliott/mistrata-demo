@@ -193,7 +193,7 @@ const Navigation = () => {
                     {navbar.ctas.map((cta, index) => (
                         <li key={index}>
                         <CMSLink link={cta.link}
-                            className="flex w-full items-center justify-center rounded-lg bg-teal-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-teal-700"
+                            className="flex w-full items-center justify-center rounded-lg bg-primary-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-primary-700"
                         />
                         </li>
                     ))}
