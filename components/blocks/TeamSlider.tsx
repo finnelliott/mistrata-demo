@@ -5,8 +5,9 @@ import SectionHeader from "../shared/SectionHeader"
 import Image from "next/image"
 import { useState } from "react"
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import TeamMemberCard from "../shared/TeamMemberCard";
 
-const Team = () => {
+const TeamSlider = () => {
     const sectionHeader = {
         preheading: "Our team",
         heading: "Meet the people behind the scenes",
@@ -139,19 +140,8 @@ const Team = () => {
             <SectionHeader preheading={sectionHeader.preheading} heading={sectionHeader.heading} subheading={sectionHeader.subheading} ctas={sectionHeader.ctas} />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 {team.map((member, index) => (
-                    <div key={index} className={"flex flex-col items-start" + (index < 4 ? "" : " hidden")}>
-                        <div className="relative w-full h-full aspect-square overflow-hidden object-cover block">
-                            <Image
-                                src={member.image.url}
-                                fill={true}
-                                alt={member.image.alt}
-                            />
-                        </div>
-                        <div className="flex flex-col items-start mt-4">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                            <p className="text-primary-700 text-lg mb-4">{member.role}</p>
-                            <p className="text-gray-600 font-normal text-base">{member.bio}</p>
-                        </div>
+                    <div key={index} className={(index < 4 ? "" : " hidden")}>
+                        <TeamMemberCard member={member} index={index} />
                     </div>
                 ))}
             </div>
@@ -163,4 +153,4 @@ const Team = () => {
     )
 }
 
-export default Team
+export default TeamSlider
