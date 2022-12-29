@@ -62,7 +62,7 @@ const Testimonials = () => {
                         <div className="relative py-8 flex flex-col overflow-hidden w-full h-full">
                             {/* Rating */}
                             <div className="flex flex-row mb-8 flex-none">
-                                {Array(testimonials[index].rating).fill(0).map((_, index) => (<StarIcon className="w-5 h-5 mr-1 text-amber-300"/>))}
+                                {Array(testimonials[index].rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-amber-300"/>))}
                             </div>
                             {/* Quote */}
                             <div className="shrink text-gray-900 text-xl md:text-2xl lg:text-4xl font-medium leading-snug mb-16 text-ellipsis line-clamp-none lg:line-clamp-4 xl:line-clamp-5">{testimonials[index].quote}</div>
