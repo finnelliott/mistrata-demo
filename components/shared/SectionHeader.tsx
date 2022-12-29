@@ -21,10 +21,10 @@ type Props = {
 
 const SectionHeader:React.FC<Props> = ({ preheading, heading, subheading, ctas }) => {
     return (
-        <div className="flex w-full flex-col lg:flex-row justify-between items-start lg:items-center">
+        <div className="flex w-full flex-col lg:flex-row justify-between items-start lg:items-center pb-16">
             <div className="flex flex-col place-items-start max-w-3xl mb-8 lg:mb-0">
                 {preheading && <div className="text-base font-semibold text-primary-700 text-left mb-3">{preheading}</div>}
-                <h2 className="text-4xl text-gray-900 text-left font-semibold">{heading}</h2>
+                <h2 className="text-3xl text-gray-900 text-left font-semibold">{heading}</h2>
                 {subheading && <div className="text-lg font-normal text-gray-500 mt-5">{subheading}</div>}
             </div>
             <div className="flex space-x-2">

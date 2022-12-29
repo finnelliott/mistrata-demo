@@ -1,4 +1,5 @@
 import Benefits from "../../components/blocks/Benefits";
+import BlogPosts from "../../components/blocks/BlogPosts";
 import CTA from "../../components/blocks/CTA";
 import FAQs from "../../components/blocks/FAQs";
 import Hero from "../../components/blocks/Hero";
@@ -14,6 +15,7 @@ export default function Page() {
     <Team />
     <CTA />
     <FAQs />
+    <BlogPosts />
     </>
   )
 }

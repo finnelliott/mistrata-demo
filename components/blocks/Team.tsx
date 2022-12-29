@@ -137,7 +137,7 @@ const Team = () => {
     return (
         <Container>
             <SectionHeader preheading={sectionHeader.preheading} heading={sectionHeader.heading} subheading={sectionHeader.subheading} ctas={sectionHeader.ctas} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 {team.map((member, index) => (
                     <div key={index} className={"flex flex-col items-start" + (index < 4 ? "" : " hidden")}>
                         <div className="relative w-full h-full aspect-square overflow-hidden object-cover block">
