@@ -15,9 +15,9 @@ type Props = {
     }
 }
 
-const TeamMemberCard:React.FC<Props> = ({ index, member }) => {
+const TeamMemberCard:React.FC<Props> = ({ member }) => {
     return (
-        <div key={index} className="flex flex-col items-start">
+        <div className="flex flex-col items-start">
             <div className="relative w-full h-full aspect-square overflow-hidden object-cover block">
                 <Image
                     src={member.image.url}
