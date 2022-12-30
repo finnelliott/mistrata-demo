@@ -1,5 +1,3 @@
-"use client";
-
 import { StarIcon } from "@heroicons/react/24/solid"
 import Image from "next/image";
 import Container from "./Container"

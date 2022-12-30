@@ -8,13 +8,15 @@ export default function MarketingLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-    <DemoBanner />
-    <Navigation />
-    <main>
-    {children}
-    </main>
-    <Footer />
-    </>
+    <div className="relative">
+      <DemoBanner />
+      <div className="relative z-10">
+        <Navigation />
+        <main>
+        {children}
+        </main>
+        <Footer />
+      </div>
+    </div>
   )
 }

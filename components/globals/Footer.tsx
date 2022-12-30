@@ -35,6 +35,24 @@ const Footer = () => {
                             }
                         }
                     },
+                    {
+                        link: {
+                            label: "Careers",
+                            type: "page",
+                            page: {
+                                slug: "careers"
+                            }
+                        }
+                    },
+                    {
+                        link: {
+                            label: "Contact",
+                            type: "page",
+                            page: {
+                                slug: "contact"
+                            }
+                        }
+                    },
                 ]
             },
             {
@@ -42,19 +60,28 @@ const Footer = () => {
                 items: [
                     {
                         link: {
-                            label: "About",
+                            label: "Pricing",
                             type: "page",
                             page: {
-                                slug: "about"
+                                slug: "pricing"
                             }
                         }
                     },
                     {
                         link: {
-                            label: "Team",
+                            label: "Blog",
                             type: "page",
                             page: {
-                                slug: "team"
+                                slug: "blog"
+                            }
+                        }
+                    },
+                    {
+                        link: {
+                            label: "Support",
+                            type: "page",
+                            page: {
+                                slug: "support"
                             }
                         }
                     },

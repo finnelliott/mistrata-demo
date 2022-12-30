@@ -36,7 +36,7 @@ type Props = {
     }[]
 }
 
-const FAQs = () => {
+const FAQs = ({ showCTA }: { showCTA?: boolean }) => {
 
     const block = {
         preheading: "Support",
@@ -182,14 +182,15 @@ const FAQs = () => {
                     </dl>
                 </div>
             </div>
-            <div className="bg-gray-50 rounded-lg w-full flex flex-col space-y-8 items-center justify-center p-8">
+            {showCTA !== false && <div className="bg-gray-50 rounded-lg w-full flex flex-col space-y-8 items-center justify-center p-8">
                 <div className="flex flex-row -space-x-4 items-end">
                     {block.team.map((member, index) => (
-                        <div key={index} className="relative w-14 h-14 rounded-full overflow-hidden bg-white border-gray-50 border-2 object-cover first:-rotate-12 last:rotate-12 first:w-12 first:h-12 last:w-12 last:h-12 first:z-10 last:z-10 z-20">
+                        <div key={index} className="relative w-14 h-14 rounded-full overflow-hidden bg-white border-gray-50 border-2 first:-rotate-12 last:rotate-12 first:w-12 first:h-12 last:w-12 last:h-12 first:z-10 last:z-10 z-20">
                             <Image
                                 src={member.image.url}
                                 alt={member.image.alt}
                                 fill={true}
+                                className="object-cover"
                             />
                         </div>
                     ))}
@@ -221,7 +222,7 @@ const FAQs = () => {
                     </div>
                 ))}
                 </div>
-            </div>
+            </div>}
         </Container>
     )
 }

@@ -1,7 +1,11 @@
+import PageHeader from "../../../components/blocks/PageHeader";
+import RichText from "../../../components/blocks/RichText";
+
 export default function Page() {
   return (
-    <main>
-      <h1>Page</h1>
-    </main>
+    <>
+    <PageHeader heading="Privacy" subheading="Learn more about the company and the team behind it." />
+    <RichText />
+    </>
   )
 }

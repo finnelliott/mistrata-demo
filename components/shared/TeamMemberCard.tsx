@@ -18,11 +18,12 @@ type Props = {
 const TeamMemberCard:React.FC<Props> = ({ member }) => {
     return (
         <div className="flex flex-col items-start">
-            <div className="relative w-full h-full aspect-square overflow-hidden object-cover block">
+            <div className="relative w-full h-full aspect-square overflow-hidden block">
                 <Image
                     src={member.image.url}
                     fill={true}
                     alt={member.image.alt}
+                    className="object-cover"
                 />
             </div>
             <div className="flex flex-col items-start mt-4">
