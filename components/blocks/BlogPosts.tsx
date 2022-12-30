@@ -1734,41 +1734,43 @@ const BlogPosts = () => {
             </Link>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
               {posts.slice(pageIndex*7+1, pageIndex*7+7).map((post, index) => (
-                <Link href={post.href} key={index} className="h-full flex flex-col justify-between hover:scale-[99%] transform duration-200">
-                <div>
-                <div className="relative mb-8 aspect-video">
-                    <Image
-                        src={post.image.url}
-                        alt={post.image.alt}
-                        fill={true}
-                        className="object-cover"
-                    />
+                <div key={index} className="w-full h-full">
+                  <Link href={post.href} className="h-full flex flex-col justify-between hover:scale-[99%] transform duration-200">
+                  <div>
+                  <div className="relative mb-8 aspect-video">
+                      <Image
+                          src={post.image.url}
+                          alt={post.image.alt}
+                          fill={true}
+                          className="object-cover"
+                      />
+                  </div>
+                  <div className="mb-3 text-sm font-semibold text-teal-700">{post.category.name}</div>
+                  <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis">{post.title}</h3>
+                  <p className="text-gray-500 mb-6 line-clamp-3 text-ellipsis">{post.description}</p>
+                  </div>
+                  <div className="flex items-center">
+                      <div className="flex-shrink-0 relative object-cover aspect-square w-10">
+                          <Image
+                              className="rounded-full"
+                              src={post.author.image.url}
+                              alt={post.author.image.alt}
+                              fill={true}
+                          />
+                      </div>
+                      <div className="ml-3">
+                          <p className="text-sm font-medium text-gray-900">
+                              {post.author.name}
+                          </p>
+                          <div className="flex space-x-1 text-sm text-gray-500">
+                              <time dateTime={post.datetime}>{post.date}</time>
+                              <span aria-hidden="true">&middot;</span>
+                              <span>{post.readingTime} read</span>
+                          </div>
+                      </div>
+                  </div>
+                  </Link>
                 </div>
-                <div className="mb-3 text-sm font-semibold text-teal-700">{post.category.name}</div>
-                <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis">{post.title}</h3>
-                <p className="text-gray-500 mb-6 line-clamp-3 text-ellipsis">{post.description}</p>
-                </div>
-                <div className="flex items-center">
-                    <div className="flex-shrink-0 relative object-cover aspect-square w-10">
-                        <Image
-                            className="rounded-full"
-                            src={post.author.image.url}
-                            alt={post.author.image.alt}
-                            fill={true}
-                        />
-                    </div>
-                    <div className="ml-3">
-                        <p className="text-sm font-medium text-gray-900">
-                            {post.author.name}
-                        </p>
-                        <div className="flex space-x-1 text-sm text-gray-500">
-                            <time dateTime={post.datetime}>{post.date}</time>
-                            <span aria-hidden="true">&middot;</span>
-                            <span>{post.readingTime} read</span>
-                        </div>
-                    </div>
-                </div>
-              </Link>
               ))}
             </div>
             <nav className="flex items-center justify-between border-t border-gray-200 px-0 mt-16">
@@ -1787,17 +1789,19 @@ const BlogPosts = () => {
                     Array(Math.ceil(posts.length / 7)).fill(0).map((_, index) => {
                     if (index < 2) {
                       return <button
+                        key={index}
                         onClick={() => setPageIndex(index)}
                         className={classNames(pageIndex == index ? "border-primary-500 text-primary-600" : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300", "inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium")}
                       >
                           {index + 1}
                       </button>
                     } else if (index == 2) {
-                      return <span className="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500">
+                      return <span key={index} className="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500">
                         ...
                       </span>
                     } else if (index >= Math.ceil(posts.length / 7) - 2) {
                       return <button
+                        key={index}
                         onClick={() => setPageIndex(index)}
                         className={classNames(pageIndex == index ? "border-primary-500 text-primary-600" : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300", "inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium")}
                       >
@@ -1808,6 +1812,7 @@ const BlogPosts = () => {
                   :
                     Array(Math.ceil(posts.length / 7)).fill(0).map((_, index) => (
                     <button
+                      key={index}
                       onClick={() => setPageIndex(index)}
                       className={classNames(pageIndex == index ? "border-primary-500 text-primary-600" : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300", "inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium")}
                     >
