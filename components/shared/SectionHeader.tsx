@@ -1,4 +1,6 @@
+import { Link } from "../../payload-types"
 import CMSLink from "./CMSLink"
+import Icon from "./Icon"
 import PrimaryButton from "./PrimaryButton"
 import SecondaryButton from "./SecondaryButton"
 
@@ -6,17 +8,7 @@ type Props = {
     preheading?: string,
     heading: string,
     subheading?: string,
-    ctas?: {
-        link: {
-            label: string,
-            type: string,
-            url?: string,
-            page?: {
-                slug: string
-            }
-        },
-        icon?: (props: any) => JSX.Element
-    }[]
+    ctas?: Link[]
 }
 
 const SectionHeader:React.FC<Props> = ({ preheading, heading, subheading, ctas }) => {
@@ -30,17 +22,24 @@ const SectionHeader:React.FC<Props> = ({ preheading, heading, subheading, ctas }
             <div className="flex space-x-2">
                 {ctas?.map((cta, index) => (
                     <div key={index}>
-                    <CMSLink link={cta.link}>
+                    <CMSLink link={cta}>
                         {((index % 2 == 0) && (ctas.length > 1)) ?
                         <SecondaryButton>
                             <>
-                            {cta.icon && <cta.icon className="w-5 h-5 mr-2" />}
-                            {cta.link.label}
+                            {cta.icon && <div className="w-5 h-5 mr-2 text-gray-900 stroke-current">
+                                <Icon icon={cta.icon} />
+                            </div>}
+                            {cta.label}
                             </>
                         </SecondaryButton>
                         :
                         <PrimaryButton>
-                            {cta.link.label}
+                            <>
+                            {cta.icon && <div className="w-5 h-5 mr-2 text-white stroke-current">
+                                <Icon icon={cta.icon} />
+                            </div>}
+                            {cta.label}
+                            </>
                         </PrimaryButton>
                         }
                     </CMSLink>

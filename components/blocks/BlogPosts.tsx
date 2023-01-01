@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import SectionHeader from "../shared/SectionHeader"
-import Container from "./Container"
+import Container from "../shared/Container"
 
 const posts = [
   {

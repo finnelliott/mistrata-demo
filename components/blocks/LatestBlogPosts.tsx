@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import SectionHeader from "../shared/SectionHeader"
-import Container from "./Container"
+import Container from "../shared/Container"
 
 const posts = [
     {

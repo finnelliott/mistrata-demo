@@ -1,21 +1,12 @@
-import Benefits from "../../components/blocks/Benefits";
-import CTA from "../../components/blocks/CTA";
-import FAQs from "../../components/blocks/FAQs";
-import Hero from "../../components/blocks/Hero";
-import TeamSlider from "../../components/blocks/TeamSlider";
-import Testimonials from "../../components/blocks/Testimonials";
-import LatestBlogPosts from "../../components/blocks/LatestBlogPosts";
+import BlockSerializer from "../../components/shared/BlockSerializer";
 
-export default function Page() {
+export default async function Page() {
+  const page = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"home"}`).then((res) => res.json()).then((res) => res.docs[0])
+
   return (
     <>
-    <Hero />
-    <Benefits />
-    <Testimonials />
-    <TeamSlider />
-    <CTA />
-    <FAQs />
-    <LatestBlogPosts />
+      <BlockSerializer page={page as any} />
     </>
   )
 }
+

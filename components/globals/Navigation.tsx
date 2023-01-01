@@ -11,6 +11,7 @@ import CMSLink from '../shared/CMSLink'
 import Link from 'next/link'
 import SecondaryButton from '../shared/SecondaryButton';
 import PrimaryButton from '../shared/PrimaryButton';
+import { Link as LinkType } from '../../payload-types';
 
 type CTA = {
     link: {
@@ -45,8 +46,9 @@ const Navigation = () => {
                     type: "page",
                     page: {
                         slug: "about"
-                    }
-                }
+                    },
+                    blockType: 'link',
+                } as LinkType
             },
             {
                 link: {
@@ -54,8 +56,9 @@ const Navigation = () => {
                     type: "page",
                     page: {
                         slug: "team"
-                    }
-                }
+                    },
+                    blockType: 'link',
+                } as LinkType
             },
             {
                 link: {
@@ -63,8 +66,9 @@ const Navigation = () => {
                     type: "page",
                     page: {
                         slug: "pricing"
-                    }
-                }
+                    },
+                    blockType: 'link',
+                } as LinkType
             },
             {
                 link: {
@@ -72,8 +76,9 @@ const Navigation = () => {
                     type: "page",
                     page: {
                         slug: "contact"
-                    }
-                }
+                    },
+                    blockType: 'link',
+                } as LinkType
             }
         ],
         ctas: [
@@ -83,10 +88,11 @@ const Navigation = () => {
                     type: "page",
                     page: {
                         slug: "contact"
-                    }
-                }
+                    },
+                    blockType: 'link',
+                } as LinkType
             }
-        ] as CTA[]
+        ]
     }
 
     return (
@@ -118,8 +124,8 @@ const Navigation = () => {
                 {/* Links */}
                 <nav className="flex-1 hidden space-x-8 md:flex justify-start">
                     {navbar.navigation_items.map((item, index) => (
-                        <div key={index}>
-                            <CMSLink link={item.link} className="text-base font-medium text-gray-600 hover:text-gray-500"/>
+                        <div key={index} className="text-base font-medium text-gray-600 hover:text-gray-500" >
+                            <CMSLink link={item.link}/>
                         </div>
                     ))}
                 </nav>
@@ -131,7 +137,7 @@ const Navigation = () => {
                         {(index % 2 !== 0) ?
                         <SecondaryButton>
                             <>
-                            {cta.icon && <cta.icon className="w-5 h-5 mr-2" />}
+                            {/* {cta.icon && <cta.icon className="w-5 h-5 mr-2" />} */}
                             {cta.link.label}
                             </>
                         </SecondaryButton>
@@ -186,15 +192,13 @@ const Navigation = () => {
                 <div className="space-y-6 py-6 px-5">
                 <ul className="flex flex-col gap-y-4">
                     {navbar.navigation_items.map((item, index) => (
-                        <li key={index}><CMSLink link={item.link} className="text-base font-medium text-gray-600 hover:text-gray-700"/></li>
+                        <li key={index} className="text-base font-medium text-gray-600 hover:text-gray-700"><CMSLink link={item.link} /></li>
                     ))}
                 </ul>
                 <ul>
                     {navbar.ctas.map((cta, index) => (
-                        <li key={index}>
-                        <CMSLink link={cta.link}
-                            className="flex w-full items-center justify-center rounded-lg bg-primary-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-primary-700"
-                        />
+                        <li key={index} className="flex w-full items-center justify-center rounded-lg bg-primary-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-primary-700">
+                        <CMSLink link={cta.link} />
                         </li>
                     ))}
                 </ul>

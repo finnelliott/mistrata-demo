@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import PrimaryButton from "../shared/PrimaryButton";
 import SectionHeader from "../shared/SectionHeader";
-import Container from "./Container"
+import Container from "../shared/Container"
 
 const ContactForm = () => {
 

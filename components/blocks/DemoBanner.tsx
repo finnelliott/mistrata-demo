@@ -1,8 +1,9 @@
 "use client";
 
-import { Transition } from '@headlessui/react';
-import { SparklesIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid';
+import { SparklesIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
+import SecondaryButton from '../shared/SecondaryButton';
 
 const DemoBanner = () => {
     const [ isShowing, setIsShowing ] = useState(true)
@@ -19,14 +20,14 @@ const DemoBanner = () => {
                     <span className="text-primary-600 font-normal">Mistrata provides performance dental websites for just £40/mth.</span>
                 </p>
                 </div>
-                <div className="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
+                <div className="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 ml-0 sm:ml-3 sm:w-auto">
                 <a
                     href="https://www.mistrata.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700"
+                    className="w-full"
                 >
-                    Learn more
+                    <SecondaryButton className='w-full -py-2'>mistrata.com<ArrowTopRightOnSquareIcon className="w-5 h-5 ml-2" /></SecondaryButton>
                 </a>
                 </div>
             </div>

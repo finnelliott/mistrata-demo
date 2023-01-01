@@ -1,46 +1,8 @@
 import SectionHeader from "../shared/SectionHeader"
-import Container from "./Container"
+import Container from "../shared/Container"
 import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/24/outline'
 import Image from "next/image"
-
-const positions = [
-  {
-    id: 1,
-    title: 'Back End Developer',
-    description: 'We are looking for a Back End Developer to join our team. You will be responsible for the development and maintenance of our web applications. You will also be responsible for the development and maintenance of our web applications.',
-    type: 'Full-time',
-    location: 'Remote',
-    closeDate: '2020-01-07',
-    closeDateFull: 'January 7, 2020',
-  },
-  {
-    id: 2,
-    title: 'Front End Developer',
-    description: 'We are looking for a Back End Developer to join our team. You will be responsible for the development and maintenance of our web applications. You will also be responsible for the development and maintenance of our web applications.',
-    type: 'Full-time',
-    location: 'Remote',
-    closeDate: '2020-01-07',
-    closeDateFull: 'January 7, 2020',
-  },
-  {
-    id: 3,
-    title: 'User Interface Designer',
-    description: 'We are looking for a Back End Developer to join our team. You will be responsible for the development and maintenance of our web applications. You will also be responsible for the development and maintenance of our web applications.',
-    type: 'Full-time',
-    location: 'Remote',
-    closeDate: '2020-01-14',
-    closeDateFull: 'January 14, 2020',
-  },
-  {
-    id: 4,
-    title: 'User Interface Designer',
-    description: 'We are looking for a Back End Developer to join our team. You will be responsible for the development and maintenance of our web applications. You will also be responsible for the development and maintenance of our web applications.',
-    type: 'Full-time',
-    location: 'Remote',
-    closeDate: '2020-01-14',
-    closeDateFull: 'January 14, 2020',
-  },
-]
+import { OpenPositions as OpenPositionsType } from "../../payload-types"
 
 const image = {
     url: "/images/open-positions.png",
@@ -49,22 +11,26 @@ const image = {
     height: 1920
 }
 
-const OpenPositions = () => {
+type Props = {
+    block: OpenPositionsType
+}
+
+const OpenPositions: React.FC<Props> = ({ block }) => {
 
     return (
         <Container>
-            <SectionHeader preheading="Open positions" heading="Join our team" subheading="We are a team of passionate people who love to create amazing products." />
+            <SectionHeader preheading={block.preheading} heading={block.heading} subheading={block.subheading} />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div className="col-span-1 w-full">
                     <ul role="list" className="divide-y border-y border-gray-200 divide-gray-200">
-                        {positions.map((position) => (
+                        {block.positions.map((position) => (
                         <li key={position.id}>
                             <a href="mailto:sad@sad.co.uk" className="block hover:opacity-80">
                             <div className="py-6">
                                 <div className="flex items-center justify-between">
                                 <p className="truncate text-lg font-medium text-gray-900">{position.title}</p>
                                 <div className="ml-2 flex flex-shrink-0">
-                                    <p className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                                    <p className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800 capitalize">
                                     {position.type}
                                     </p>
                                 </div>
@@ -77,12 +43,12 @@ const OpenPositions = () => {
                                     {position.location}
                                     </p>
                                 </div>
-                                <div className="mt-2 flex items-center text-sm text-gray-500">
+                                {position.close_date && <div className="mt-2 flex items-center text-sm text-gray-500">
                                     <CalendarIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                                     <p>
-                                    Closing on <time dateTime={position.closeDate}>{position.closeDateFull}</time>
+                                    Closing on <time dateTime={position.close_date}>{new Date(position.close_date).toLocaleDateString()}</time>
                                     </p>
-                                </div>
+                                </div>}
                                 </div>
                             </div>
                             </a>

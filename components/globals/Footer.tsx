@@ -140,7 +140,7 @@ const Footer = () => {
     }
 
     return (
-        <div className="bg-gray-50">
+        <div className="bg-white">
             <div className="mx-auto max-w-7xl px-4 sm:px-8 pt-16">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
                     {footer.categories.map((category, index) => (

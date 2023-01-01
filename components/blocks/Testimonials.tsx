@@ -3,9 +3,14 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
 import { StarIcon } from "@heroicons/react/24/solid"
 import Image from "next/image";
 import { useEffect, useState } from "react"
-import Container from "./Container"
+import { Testimonials } from "../../payload-types";
+import Container from "../shared/Container"
 
-const Testimonials = () => {
+type Props = {
+    block: Testimonials
+}
+
+const Testimonials: React.FC<Props> = ({ block }) => {
 
     const image = {
         url: "/images/testimonials.png",
@@ -14,39 +19,18 @@ const Testimonials = () => {
         height: 1920
     }
 
-    const testimonials = [
-        {
-            name: "Jane Cooper",
-            title: "CEO, ABC Company",
-            rating: 5,
-            quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        },
-        {
-            name: "Jane Cooper",
-            title: "CEO, DEF Company",
-            rating: 5,
-            quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        },
-        {
-            name: "Jane Cooper",
-            title: "CEO, GHI Company",
-            rating: 5,
-            quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
-        },
-    ]
-
     const [ sliderIndex, setSliderIndex ] = useState(0)
 
     const back = () => {
         if (sliderIndex === 0) {
-            setSliderIndex(testimonials.length - 1)
+            setSliderIndex(block.testimonials.length - 1)
         } else {
             setSliderIndex(sliderIndex - 1)
         }
     }
 
     const forward = () => {
-        if (sliderIndex === testimonials.length - 1) {
+        if (sliderIndex === block.testimonials.length - 1) {
             setSliderIndex(0)
         } else {
             setSliderIndex(sliderIndex + 1)
@@ -62,15 +46,15 @@ const Testimonials = () => {
                         <div className="relative py-8 flex flex-col overflow-hidden w-full h-full">
                             {/* Rating */}
                             <div className="flex flex-row mb-8 flex-none">
-                                {Array(testimonials[sliderIndex].rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-amber-300"/>))}
+                                <span className="sr-only">{block.testimonials[sliderIndex].rating} star rating</span>{Array(block.testimonials[sliderIndex].rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-amber-300"/>))}
                             </div>
                             {/* Quote */}
-                            <div className="shrink text-gray-900 text-xl md:text-2xl lg:text-4xl font-medium leading-snug mb-16 text-ellipsis line-clamp-none lg:line-clamp-4 xl:line-clamp-5">{testimonials[sliderIndex].quote}</div>
+                            <div className="shrink text-gray-900 text-xl md:text-2xl lg:text-4xl font-medium leading-snug mb-16 text-ellipsis line-clamp-none lg:line-clamp-4 xl:line-clamp-5">{block.testimonials[sliderIndex].quote}</div>
                             {/* Name, title and slider buttons */}
                             <div className="absolute bottom-0 left-0 right-0 flex flex-row justify-between items-center flex-none w-full">
                                 <div className="flex flex-col flex-none">
-                                    <div className="text-gray-900 text-lg font-medium">{testimonials[sliderIndex].name}</div>
-                                    <div className="text-gray-500 text-base font-medium">{testimonials[sliderIndex].title}</div>
+                                    <div className="text-gray-900 text-lg font-medium">{block.testimonials[sliderIndex].name}</div>
+                                    <div className="text-gray-500 text-base font-medium">{block.testimonials[sliderIndex].caption}</div>
                                 </div>
                                 <div className="flex flex-row flex-none space-x-4">
                                     <button onClick={() => back()} className={button}><ArrowLeftIcon className="w-6 h-6 text-gray-500"/></button>
