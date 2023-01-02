@@ -88,16 +88,14 @@ const PlanPricing: React.FC<Props> = ({ block }) => {
     const cta = { link: { label: "Call us", type: "page", page: { slug: "about" } } }
 
     return (
-        <div className="bg-primary-50 w-full h-full">
             <Container>
-                <div className="pt-24">
                 <SectionHeader preheading={block.preheading} heading={block.heading} subheading={block.subheading} />
                 <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-24">
                     <div className="col-span-1 w-full">
                         <div className="flex flex-col space-y-12">
                             {block.benefits.map((benefit) => (
                             <div key={benefit.benefit} className="relative flex flex-row gap-6">
-                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-200 text-primary-600 sm:shrink-0 border-4 border-primary-100">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600 sm:shrink-0 border-4 border-primary-50">
                                 <div className="h-6 w-6">
                                     <Icon icon={benefit.icon} aria-hidden="true" />
                                 </div>
@@ -150,9 +148,7 @@ const PlanPricing: React.FC<Props> = ({ block }) => {
                         </div>
                     </div>
                 </div>
-                </div>
             </Container>
-        </div>
     )
 }
 

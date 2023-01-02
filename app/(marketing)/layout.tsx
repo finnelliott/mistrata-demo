@@ -1,6 +1,6 @@
 import DemoBanner from "../../components/blocks/DemoBanner"
-import Footer from "../../components/globals/Footer"
-import Navigation from "../../components/globals/Navigation"
+import FooterNavigation from "../../components/globals/FooterNavigation"
+import HeaderNavigation from "../../components/globals/HeaderNavigation"
 
 export default function MarketingLayout({
   children,
@@ -11,11 +11,11 @@ export default function MarketingLayout({
     <div className="relative">
       <DemoBanner />
       <div className="relative z-10">
-        <Navigation />
+        <HeaderNavigation />
         <main>
         {children}
         </main>
-        <Footer />
+        <FooterNavigation />
       </div>
     </div>
   )

@@ -20,6 +20,7 @@ const OpenPositions: React.FC<Props> = ({ block }) => {
     return (
         <Container>
             <SectionHeader preheading={block.preheading} heading={block.heading} subheading={block.subheading} />
+            {block.positions.length > 0 ? 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div className="col-span-1 w-full">
                     <ul role="list" className="divide-y border-y border-gray-200 divide-gray-200">
@@ -60,6 +61,12 @@ const OpenPositions: React.FC<Props> = ({ block }) => {
                     <Image src={image.url} alt={image.alt} fill={true} className="object-cover" />
                 </div>
             </div>
+            :
+            <div className="text-center p-8 bg-gray-50 rounded-md">
+                <p className="text-lg font-medium text-gray-900">Sorry, there are no open positions at the moment</p>
+                <p className="mt-4 text-base font-normal text-gray-600">Please check back later</p>
+            </div>
+            }
         </Container>
     )
 }

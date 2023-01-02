@@ -78,7 +78,6 @@ export interface TeamSlider {
   heading: string;
   subheading?: string;
   ctas: Link[];
-  team: string[] | Team[];
   id?: string;
   blockName?: string;
   blockType: 'team-slider';
@@ -113,7 +112,6 @@ export interface FAQs {
     id?: string;
   }[];
   cta: {
-    headshots: string[] | Team[];
     heading: string;
     subheading: string;
     ctas: {
@@ -235,7 +233,6 @@ export interface Locations {
 }
 
 export interface TeamGrid {
-  team: string[] | Team[];
   id?: string;
   blockName?: string;
   blockType: 'team-grid';
@@ -296,6 +293,38 @@ export interface PlanPricing {
   blockType: 'plan-pricing';
 }
 
+export interface PricingTable {
+  preheading?: string;
+  heading: string;
+  subheading?: string;
+  treatments: Treatment[];
+  id?: string;
+  blockName?: string;
+  blockType: 'pricing-table';
+}
+
+export interface ContactOptions {
+  options: {
+    icon: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp';
+    heading: string;
+    subheading?: string;
+    cta: Link[];
+    id?: string;
+  }[];
+  id?: string;
+  blockName?: string;
+  blockType: 'contact-options';
+}
+
+export interface ContactForm {
+  preheading?: string;
+  heading: string;
+  subheading?: string;
+  id?: string;
+  blockName?: string;
+  blockType: 'contact-form';
+}
+
 export interface Page {
   id: string;
   title: string;
@@ -314,6 +343,9 @@ export interface Page {
     | TeamGrid
     | OpenPositions
     | PlanPricing
+    | PricingTable
+    | ContactOptions
+    | ContactForm
   )[];
   meta: {
     title?: string;
@@ -337,4 +369,65 @@ export interface Team {
   website_url?: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface Treatment {
+  id: string;
+  name: string;
+  slug?: string;
+  price?: string;
+  category: 'preventative' | 'restorative' | 'cosmetic' | 'orthodontics';
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface HeaderNavigation {
+  id: string;
+  links: {
+    label: string;
+    icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+    type?: 'page' | 'url' | 'phone_number' | 'email';
+    page?: string | Page;
+    url?: string;
+    open_in_new_tab?: boolean;
+    phone_number?: string;
+    email?: string;
+    id?: string;
+    blockName?: string;
+    blockType: 'link';
+  }[];
+  ctas: {
+    label: string;
+    icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+    type?: 'page' | 'url' | 'phone_number' | 'email';
+    page?: string | Page;
+    url?: string;
+    open_in_new_tab?: boolean;
+    phone_number?: string;
+    email?: string;
+    id?: string;
+    blockName?: string;
+    blockType: 'link';
+  }[];
+}
+
+export interface FooterNavigation {
+  id: string;
+  columns: {
+    heading: string;
+    links: {
+      label: string;
+      icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+      type?: 'page' | 'url' | 'phone_number' | 'email';
+      page?: string | Page;
+      url?: string;
+      open_in_new_tab?: boolean;
+      phone_number?: string;
+      email?: string;
+      id?: string;
+      blockName?: string;
+      blockType: 'link';
+    }[];
+    id?: string;
+  }[];
 }

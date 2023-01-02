@@ -12,6 +12,9 @@ import Testimonials from "../blocks/Testimonials";
 import TeamGrid from "../blocks/TeamGrid";
 import OpenPositions from "../blocks/OpenPositions";
 import PlanPricing from "../blocks/PlanPricing";
+import PricingTable from "../blocks/PricingTable";
+import ContactOptions from "../blocks/ContactOptions";
+import ContactForm from "../blocks/ContactForm";
 
 type Props = {
     page: Page
@@ -48,6 +51,12 @@ const BlockSerializer:React.FC<Props> = ({ page }) => {
                         return <OpenPositions block={block} />
                     case 'plan-pricing':
                         return <PlanPricing block={block} />
+                    case 'pricing-table':
+                        return <PricingTable block={block} />
+                    case 'contact-options':
+                        return <ContactOptions block={block} />
+                    case 'contact-form':
+                        return <ContactForm block={block} />
                     default:
                         return <></>
                 }
