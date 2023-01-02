@@ -16,7 +16,7 @@ const TeamGrid: React.FC<Props> = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 {data.map((member, index) => (
                     <div key={index}>
-                    <TeamMemberCard member={member} index={index} />
+                    <TeamMemberCard member={member} />
                     </div>
                 ))}
             </div>

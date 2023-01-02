@@ -325,6 +325,34 @@ export interface ContactForm {
   blockType: 'contact-form';
 }
 
+export interface LatestBlogPosts {
+  preheading?: string;
+  heading: string;
+  subheading?: string;
+  ctas: {
+    label: string;
+    icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+    type?: 'page' | 'url' | 'phone_number' | 'email';
+    page?: string | Page;
+    url?: string;
+    open_in_new_tab?: boolean;
+    phone_number?: string;
+    email?: string;
+    id?: string;
+    blockName?: string;
+    blockType: 'link';
+  }[];
+  id?: string;
+  blockName?: string;
+  blockType: 'latest-blog-posts';
+}
+
+export interface BlogPosts {
+  id?: string;
+  blockName?: string;
+  blockType: 'blog-posts';
+}
+
 export interface Page {
   id: string;
   title: string;
@@ -346,6 +374,8 @@ export interface Page {
     | PricingTable
     | ContactOptions
     | ContactForm
+    | LatestBlogPosts
+    | BlogPosts
   )[];
   meta: {
     title?: string;
@@ -430,4 +460,18 @@ export interface FooterNavigation {
     }[];
     id?: string;
   }[];
+}
+
+export interface Blog {
+  id: string;
+  title: string;
+  slug?: string;
+  author: Team;
+  excerpt: string;
+  content: {
+    [k: string]: unknown;
+  }[];
+  reading_time?: number;
+  createdAt: string;
+  updatedAt: string;
 }

@@ -15,6 +15,8 @@ import PlanPricing from "../blocks/PlanPricing";
 import PricingTable from "../blocks/PricingTable";
 import ContactOptions from "../blocks/ContactOptions";
 import ContactForm from "../blocks/ContactForm";
+import LatestBlogPosts from "../blocks/LatestBlogPosts";
+import BlogPosts from "../blocks/BlogPosts";
 
 type Props = {
     page: Page
@@ -57,6 +59,10 @@ const BlockSerializer:React.FC<Props> = ({ page }) => {
                         return <ContactOptions block={block} />
                     case 'contact-form':
                         return <ContactForm block={block} />
+                    case 'latest-blog-posts':
+                        return <LatestBlogPosts block={block} />
+                    case 'blog-posts':
+                        return <BlogPosts block={block} />
                     default:
                         return <></>
                 }
