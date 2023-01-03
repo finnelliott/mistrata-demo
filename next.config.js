@@ -4,7 +4,12 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['mistrata.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.mistrata.com',
+      },
+    ],
   },
   async redirects() {
     return [
