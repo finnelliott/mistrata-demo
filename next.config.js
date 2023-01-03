@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: [process.env.SERVER_URL],
+    domains: ['mistrata.com'],
   },
   async redirects() {
     return [
