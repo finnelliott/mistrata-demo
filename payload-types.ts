@@ -505,4 +505,5 @@ export interface Business {
   id: string;
   name: string;
   logo: Media;
+  favicon: Media;
 }

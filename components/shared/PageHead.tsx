@@ -3,10 +3,13 @@ import { Blog, Page } from "../../payload-types";
 
 export default function PageHead({ page }: { page: Page | Blog } ) {
     const business = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then((res) => res.json()))
+
     const title = encodeURIComponent(page.title ?? "")
     const description = encodeURIComponent(page.meta.description ?? "")
-    const logo = encodeURIComponent(process.env.NEXT_PUBLIC_CMS_URL+business.logo.url ?? "")
+    const logo = process.env.NEXT_PUBLIC_CMS_URL+business.logo.url ?? ""
     const name = encodeURIComponent(business.name ?? "")
+    const favicon = process.env.NEXT_PUBLIC_CMS_URL+business.favicon.url ?? ""
+
     const meta_image_query = `title=${title}&description=${description}&logo=${logo}&business=${name}`
 
     return (
@@ -19,7 +22,7 @@ export default function PageHead({ page }: { page: Page | Blog } ) {
         />
 
         {/* <!-- Favicon --> */}
-        {/* <link rel="icon" type="image/png" href={`https://${process.env.NEXT_PUBLIC_AWS_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/images/${business.favicon.filename}`} /> */}
+        <link rel="icon" type="image/png" sizes="16x16" href={favicon} />
 
         {/* <!-- Twitter Card data --> */}
         <meta name="twitter:card" content="summary" />
