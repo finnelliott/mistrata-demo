@@ -39,8 +39,8 @@ const FAQsLayout: React.FC<Props> = ({ block, data }) => {
                         {block.faqs.map((faq) => (
                         <Disclosure as="div" key={faq.question} className="">
                             {({ open }) => (
-                            <div className={classNames(open ? "lg:bg-gray-50" : "" ," rounded-lg px-0 lg:px-8 py-8")}>
-                                <dt className="text-lg">
+                            <>
+                                <dt className={classNames(open ? "lg:bg-gray-50" : "" ," rounded-lg px-0 lg:px-8 py-8 text-lg")}>
                                 <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-400">
                                     <span className="font-medium text-lg text-gray-900">{faq.question}</span>
                                     <span className="ml-6 flex h-7 items-center">
@@ -60,7 +60,7 @@ const FAQsLayout: React.FC<Props> = ({ block, data }) => {
                                 <Disclosure.Panel as="dd" className="mt-2 pr-12">
                                 <p className="text-base text-gray-600">{serialize(faq.answer)}</p>
                                 </Disclosure.Panel>
-                            </div>
+                            </>
                             )}
                         </Disclosure>
                         ))}

@@ -3,7 +3,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  compress: true,
   images: {
+    minimumCacheTTL: 60,
     remotePatterns: [
       {
         protocol: 'https',
@@ -25,6 +27,18 @@ const nextConfig = {
       },
     ]
   },
+  async rewrites() {
+    return [
+        {
+            source: '/robots.txt',
+            destination: '/api/robots'
+        },
+        {
+          source: '/sitemap.xml',
+          destination: '/api/sitemap'
+      }
+    ];
+  }
 }
 
 module.exports = nextConfig

@@ -480,6 +480,10 @@ export interface Blog {
     [k: string]: unknown;
   }[];
   reading_time?: number;
+  meta: {
+    title?: string;
+    description?: string;
+  };
   createdAt: string;
   updatedAt: string;
 }
@@ -495,4 +499,10 @@ export interface Media {
   height?: number;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface Business {
+  id: string;
+  name: string;
+  logo: Media;
 }
