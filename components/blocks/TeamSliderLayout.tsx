@@ -31,8 +31,8 @@ export default function TeamSliderLayout({ block, data }: { block: TeamSliderTyp
                 ))}
             </div>
             {team.length > 4 && <div className="flex flex-row flex-none space-x-4">
-                <button onClick={() => back()} className={button}><ArrowLeftIcon className="w-6 h-6 text-gray-500"/></button>
-                <button onClick={() => forward()} className={button}><ArrowRightIcon className="w-6 h-6 text-gray-500"/></button>
+                <button onClick={() => back()} className={button}><span className="sr-only">Backwards</span><ArrowLeftIcon className="w-6 h-6 text-gray-500"/></button>
+                <button onClick={() => forward()} className={button}><span className="sr-only">Forwards</span><ArrowRightIcon className="w-6 h-6 text-gray-500"/></button>
             </div>}
         </Container>
     )

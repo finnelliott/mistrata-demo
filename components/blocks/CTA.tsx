@@ -61,8 +61,8 @@ const CTA:React.FC<Props> = ({ block }) => {
                                 <div className="text-gray-100 text-base font-medium">{block.testimonials[sliderIndex].caption}</div>
                             </div>
                             <div className="flex flex-row flex-none space-x-4">
-                                <button onClick={() => back()} className={button}><ArrowLeftIcon className="w-4 h-4"/></button>
-                                <button onClick={() => forward()} className={button}><ArrowRightIcon className="w-4 h-4"/></button>
+                                <button onClick={() => back()} className={button}><span className="sr-only">Backwards</span><ArrowLeftIcon className="w-4 h-4"/></button>
+                                <button onClick={() => forward()} className={button}><span className="sr-only">Forwards</span><ArrowRightIcon className="w-4 h-4"/></button>
                             </div>
                         </div>
                     </div>
