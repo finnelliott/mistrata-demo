@@ -1,20 +1,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FooterNavigation } from "../../payload-types";
+import { Business, FooterNavigation } from "../../payload-types";
 import CMSLink from "../shared/CMSLink";
 
-const FooterNavigationLayout = ({ data }: { data: FooterNavigation}) => {
-    const business = {
-        name: "South Avenue Dental",
-        logo: {
-            url: "/images/logo.png",
-            alt: "logo",
-            width: 3946,
-            height: 801
-        }
-    }
-
+const FooterNavigationLayout = ({ data, business }: { data: FooterNavigation, business: Business}) => {
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-7xl px-4 sm:px-8 pt-16">
@@ -32,9 +22,9 @@ const FooterNavigationLayout = ({ data }: { data: FooterNavigation}) => {
                         <span className="sr-only">{business.name}</span>
                         <div className="relative h-12 w-auto overflow-hidden flex items-center">
                             <Image
-                                src={business.logo.url}
+                                src={process.env.NEXT_PUBLIC_CMS_URL + (business.logo.url as string)}
                                 height={40}
-                                width={(business.logo.width/business.logo.height) * 40}
+                                width={((business.logo.width as number)/(business.logo.height as number)) * 40}
                                 alt={business.logo.alt}
                             />
                         </div>

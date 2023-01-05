@@ -12,19 +12,9 @@ import Link from 'next/link'
 import SecondaryButton from '../shared/SecondaryButton';
 import PrimaryButton from '../shared/PrimaryButton';
 import Icon from "../shared/Icon";
-import { HeaderNavigation } from "../../payload-types";
+import { Business, HeaderNavigation } from "../../payload-types";
 
-export default function HeaderNavigationLayout ({ data }: { data: HeaderNavigation } ) {
-
-    const business = {
-        name: "South Avenue Dental",
-        logo: {
-            url: "/images/logo.png",
-            alt: "logo",
-            width: 3946,
-            height: 801
-        }
-    }
+export default function HeaderNavigationLayout ({ data, business }: { data: HeaderNavigation, business: Business } ) {
 
     return (
         <Popover className="relative bg-white z-50">
@@ -38,9 +28,9 @@ export default function HeaderNavigationLayout ({ data }: { data: HeaderNavigati
                     <span className="sr-only">{business.name}</span>
                     <div className="relative h-12 w-auto overflow-hidden flex items-center">
                         <Image
-                            src={business.logo.url}
+                            src={process.env.NEXT_PUBLIC_CMS_URL + (business.logo.url as string)}
                             height={40}
-                            width={(business.logo.width/business.logo.height) * 40}
+                            width={((business.logo.width as number)/(business.logo.height as number)) * 40}
                             alt={business.logo.alt}
                         />
                     </div>
@@ -110,10 +100,10 @@ export default function HeaderNavigationLayout ({ data }: { data: HeaderNavigati
                     <span className="sr-only">{business.name}</span>
                     <div className="relative h-12 w-auto overflow-hidden flex items-center">
                         <Image
-                            src={business.logo.url}
-                            alt={business.logo.alt}
+                            src={process.env.NEXT_PUBLIC_CMS_URL + (business.logo.url as string)}
                             height={40}
-                            width={(business.logo.width/business.logo.height) * 40}
+                            width={((business.logo.width as number)/(business.logo.height as number)) * 40}
+                            alt={business.logo.alt}
                         />
                     </div>
                         
