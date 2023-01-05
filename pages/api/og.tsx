@@ -58,7 +58,7 @@ export default async function handler(req: NextRequest) {
             flexWrap: 'nowrap',
           }}
         >
-          <div tw={(parseInt(width as string) > 800 ? "p-32" : "p-24") + " bg-gray-50 flex w-full h-full justify-center items-center"}>
+          <div tw={(parseInt(width as string) > 800 ? "p-32" : "p-16") + " bg-gray-50 flex w-full h-full justify-center items-center"}>
             <div tw="flex flex-col w-full h-full justify-between items-start">
             <div tw="w-full h-auto flex flex-col justify-center items-start">
                 {title && <span tw="text-7xl text-left font-normal text-gray-900">{title == "Home" ? business : title}</span>}
