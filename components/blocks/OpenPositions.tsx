@@ -1,6 +1,6 @@
 import SectionHeader from "../shared/SectionHeader"
 import Container from "../shared/Container"
-import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/24/outline'
+import { CalendarIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import Image from "next/image"
 import { OpenPositions as OpenPositionsType } from "../../payload-types"
 

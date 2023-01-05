@@ -2,7 +2,7 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
 import { StarIcon } from "@heroicons/react/24/solid"
 import Image from "next/image";
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Testimonials } from "../../payload-types";
 import Container from "../shared/Container"
 

@@ -12,8 +12,6 @@ const Locations: React.FC<Props> = ({ block }) => {
 
     const dotw = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
-    type DayType = typeof dotw[0]
-
     return (
         <Container>
             <SectionHeader preheading="Visit us" heading="Our practice" subheading="Come visit our friendly team at one of our offices." />

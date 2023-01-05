@@ -1,7 +1,7 @@
 "use client";
 
 import { Disclosure } from "@headlessui/react"
-import { ChevronDownIcon, MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/outline"
+import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/outline"
 import Image from "next/image";
 import serialize from "../shared/RichTextSerializer";
 import { FAQs, Team } from "../../payload-types";

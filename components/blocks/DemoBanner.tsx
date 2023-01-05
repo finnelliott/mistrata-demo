@@ -1,12 +1,8 @@
-"use client";
-
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid';
 import { SparklesIcon } from '@heroicons/react/24/outline'
-import { useState } from 'react'
 import SecondaryButton from '../shared/SecondaryButton';
 
 const DemoBanner = () => {
-    const [ isShowing, setIsShowing ] = useState(true)
     return (
         <div className="bg-primary-50 border-b border-primary-200 sticky top-0 left-0 right-0 z-50">
             <div className="mx-auto max-w-7xl py-3 px-3 sm:px-8 lg:px-8">

@@ -6,12 +6,7 @@ export const config = {
 };
 
 export default async function handler(req: NextRequest) {
-  // const normalFont = fetch(new URL('../../assets/Inter-Regular.ttf', import.meta.url)).then(
-  //   (res) => res.arrayBuffer(),
-  // );
-
   try {
-    // const normalFontData = await normalFont;
     const { searchParams } = new URL(req.url);
     
     const hasTitle = searchParams.has('title');
@@ -78,14 +73,6 @@ export default async function handler(req: NextRequest) {
       {
         width: parseInt(width as string) ?? 1200,
         height: parseInt(height as string) ?? 630,
-        // fonts: [
-        //   {
-        //     name: 'Inter',
-        //     data: normalFontData,
-        //     style: 'normal',
-        //     weight: 400,
-        //   },
-        // ],
       },
     );
   } catch (e: any) {

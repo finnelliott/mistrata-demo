@@ -1,4 +1,3 @@
-import { EnvelopeIcon, MapPinIcon, PhoneIcon } from "@heroicons/react/24/outline"
 import { ContactOptions } from "../../payload-types"
 import CMSLink from "../shared/CMSLink"
 import Container from "../shared/Container"
