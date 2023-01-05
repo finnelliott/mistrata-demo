@@ -1,6 +1,9 @@
+import { use } from "react";
 import { Blog, Page } from "../../payload-types";
 
 export default function PageHead({ page }: { page: Page | Blog } ) {
+    const business = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then((res) => res.json()))
+
     return (
         <>
         <title>{ page.meta.title }</title>
@@ -11,7 +14,7 @@ export default function PageHead({ page }: { page: Page | Blog } ) {
 
         <meta
             property="og:image"
-            content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og?title=${page.title}&description=${page.meta.description}`}
+            content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og?title=${page.title}&description=${page.meta.description}&logo=${process.env.NEXT_PUBLIC_CMS_URL+business.logo.url}&business=${business.name}`}
         />
 
         {/* <!-- Favicon --> */}
