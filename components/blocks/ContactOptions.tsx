@@ -23,7 +23,7 @@ const ContactOptions: React.FC<Props> = ({ block }) => {
                             </div>
                         </div>
                         <div className="mt-12">
-                            <h3 className="text-xl font-semibold text-gray-900">{option.heading}</h3>
+                            <h2 className="text-xl font-semibold text-gray-900">{option.heading}</h2>
                             <p className="mt-2 mb-5 text-base text-gray-600">{option.subheading}</p>
                             <CMSLink link={option.cta[0]}><div className="text-base font-semibold text-primary-700">{option.cta[0].label}</div></CMSLink>
                         </div>

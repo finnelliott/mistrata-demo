@@ -12,7 +12,7 @@ export default function PageHead({ page, business }: { page: Page | Blog, busine
     return (
         <>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{ page.meta.title }</title>
+        { page.meta.title ? <title>{ page.meta.title }</title> : <title>{ page.title } | {business.name}</title> }
         <meta
             name="description"
             content={page.meta.description}
