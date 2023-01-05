@@ -3,7 +3,7 @@ import { Business } from "../../payload-types"
 
 export default function StructuredData({ business }: { business: Business }) {
     return (
-        <Script id="local-business-structured-data" async type="application/json+ld" dangerouslySetInnerHTML={{  __html: JSON.stringify({
+        <Script id="local-business-structured-data" strategy="beforeInteractive" type="application/json+ld" dangerouslySetInnerHTML={{  __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Dentist",
             "address": {
