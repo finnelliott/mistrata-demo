@@ -6,15 +6,11 @@ export default function PageHead({ page }: { page: Page | Blog } ) {
 
     return (
         <>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{ page.meta.title }</title>
         <meta
             name="description"
             content={page.meta.description}
-        />
-
-        <meta
-            property="og:image"
-            content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og?title=${page.title}&description=${page.meta.description}&logo=${process.env.NEXT_PUBLIC_CMS_URL+business.logo.url}&business=${business.name}`}
         />
 
         {/* <!-- Favicon --> */}
@@ -31,6 +27,11 @@ export default function PageHead({ page }: { page: Page | Blog } ) {
         {/* <!-- Open Graph data --> */}
         <meta property="og:title" content={page.meta.title} />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={business.name} />
+        <meta
+            property="og:image"
+            content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og?title=${page.title}&description=${page.meta.description}&logo=${process.env.NEXT_PUBLIC_CMS_URL+business.logo.url}&business=${business.name}`}
+        />
 
         {/* {page.meta.image?.filename && <meta property="og:image" content={`https://${process.env.NEXT_PUBLIC_AWS_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/images/${page.meta.image.filename}`} />} */}
         <meta property="og:description" content={page.meta.description} />
