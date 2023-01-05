@@ -3,7 +3,11 @@ import { Blog, Page } from "../../payload-types";
 
 export default function PageHead({ page }: { page: Page | Blog } ) {
     const business = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then((res) => res.json()))
-    const meta_image_query = encodeURIComponent(`title=${page.title}&description=${page.meta.description}&logo=${process.env.NEXT_PUBLIC_CMS_URL+business.logo.url}&business=${business.name}`)
+    const title = encodeURIComponent(page.title ?? "")
+    const description = encodeURIComponent(page.meta.description ?? "")
+    const logo = encodeURIComponent(process.env.NEXT_PUBLIC_CMS_URL+business.logo.url ?? "")
+    const name = encodeURIComponent(business.name ?? "")
+    const meta_image_query = `title=${title}&description=${description}&logo=${logo}&business=${name}`
 
     return (
         <>
