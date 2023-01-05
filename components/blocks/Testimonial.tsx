@@ -9,18 +9,16 @@ type Props = {
 
 const Testimonial:React.FC<Props> = ({ block }) => {
 
-    const image = {
-        url: "/images/testimonials.png",
-        alt: "testimonials",
-        width: 1920,
-        height: 1920
-    }
-
     return (
         <Container>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-square">
-                    <Image src={image.url} alt={image.alt} fill={true} className="object-cover" />
+                    <Image 
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
+                        alt={block.image.alt}
+                        fill={true} 
+                        className="object-cover" 
+                    />
                 </div>
                 <div className="col-span-1 lg:col-span-2 w-full">
                         <div className="relative py-8 flex flex-col overflow-hidden w-full h-full">

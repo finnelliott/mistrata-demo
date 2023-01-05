@@ -69,6 +69,7 @@ export interface Testimonials {
     caption: string;
     id?: string;
   }[];
+  image: Media;
   id?: string;
   blockName?: string;
   blockType: 'testimonial-slider';
@@ -96,6 +97,7 @@ export interface CTA {
     caption: string;
     id?: string;
   }[];
+  image: Media;
   id?: string;
   blockName?: string;
   blockType: 'cta';
@@ -103,7 +105,7 @@ export interface CTA {
 
 export interface FAQs {
   preheading?: string;
-  heading: string;
+  heading?: string;
   subheading?: string;
   faqs: {
     question: string;
@@ -170,6 +172,7 @@ export interface Testimonial {
   quote: string;
   name: string;
   caption: string;
+  image: Media;
   id?: string;
   blockName?: string;
   blockType: 'testimonial';
@@ -256,6 +259,7 @@ export interface OpenPositions {
     blockName?: string;
     blockType: 'link';
   }[];
+  image: Media;
   positions: {
     title: string;
     description: string;
@@ -321,6 +325,7 @@ export interface ContactForm {
   preheading?: string;
   heading: string;
   subheading?: string;
+  image: Media;
   id?: string;
   blockName?: string;
   blockType: 'contact-form';
@@ -390,6 +395,7 @@ export interface Team {
   id: string;
   name: string;
   slug?: string;
+  image: Media;
   role: string;
   short_bio?: string;
   long_bio?: {
@@ -467,6 +473,7 @@ export interface Blog {
   id: string;
   title: string;
   slug?: string;
+  image: Media;
   author: Team;
   excerpt: string;
   content: {

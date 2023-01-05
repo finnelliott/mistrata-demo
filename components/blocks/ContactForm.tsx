@@ -14,13 +14,6 @@ type Props = {
 
 const ContactForm: React.FC<Props> = ({ block }) => {
 
-    const image = {
-        url: "/images/testimonials.png",
-        alt: "testimonials",
-        width: 1920,
-        height: 1920
-    }
-
     return (
         <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
@@ -73,7 +66,12 @@ const ContactForm: React.FC<Props> = ({ block }) => {
                         </div>
                 </div>
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-square">
-                    <Image src={image.url} alt={image.alt} fill={true} className="object-cover" />
+                    <Image 
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
+                        alt={block.image.alt}
+                        fill={true} 
+                        className="object-cover" 
+                    />
                 </div>
             </div>
         </Container>

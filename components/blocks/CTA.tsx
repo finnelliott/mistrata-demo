@@ -16,13 +16,6 @@ type Props = {
 
 const CTA:React.FC<Props> = ({ block }) => {
 
-    const image = {
-        url: "/images/cta.png",
-        alt: "cta",
-        width: 1920,
-        height: 1920
-    }
-
     const [ sliderIndex, setSliderIndex ] = useState(0)
 
     const back = () => {
@@ -47,7 +40,12 @@ const CTA:React.FC<Props> = ({ block }) => {
         <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-[4/3]">
-                    <Image src={image.url} alt={image.alt} fill={true} className="object-cover" />
+                    <Image 
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
+                        alt={block.image.alt}
+                        fill={true} 
+                        className="object-cover" 
+                    />
                     <div className="p-4 flex flex-col overflow-hidden w-full h-min z-10 absolute bottom-0 left-0 right-0 bg-white bg-opacity-10 border-t border-white border-opacity-50 backdrop-blur-md">
                         {/* Rating */}
                         <div className="flex flex-row mt-2 mb-4 flex-none">

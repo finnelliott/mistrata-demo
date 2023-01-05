@@ -4,13 +4,6 @@ import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/24/outline
 import Image from "next/image"
 import { OpenPositions as OpenPositionsType } from "../../payload-types"
 
-const image = {
-    url: "/images/open-positions.png",
-    alt: "testimonials",
-    width: 1920,
-    height: 1920
-}
-
 type Props = {
     block: OpenPositionsType
 }
@@ -58,7 +51,12 @@ const OpenPositions: React.FC<Props> = ({ block }) => {
                     </ul>
                 </div>
                 <div className="col-span-1 bg-gray-100 w-full relative block aspect-[4/3]">
-                    <Image src={image.url} alt={image.alt} fill={true} className="object-cover" />
+                    <Image 
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
+                        alt={block.image.alt}
+                        fill={true} 
+                        className="object-cover" 
+                    />
                 </div>
             </div>
             :

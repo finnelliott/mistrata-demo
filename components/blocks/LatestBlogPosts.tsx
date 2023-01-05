@@ -22,24 +22,23 @@ const LatestBlogPosts: React.FC<Props> = ({ block }) => {
                       <div>
                       <div className="relative mb-8 aspect-video">
                           <Image
-                              src={"/images/hero.png"}
-                              alt={""}
+                              src={process.env.NEXT_PUBLIC_CMS_URL + (post.image.url as string)}
+                              alt={post.image.alt}
                               fill={true}
                               className="object-cover"
                           />
                       </div>
-                      {/* <div className="mb-3 text-sm font-semibold text-teal-700">{post.category.name}</div> */}
                       <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis">{post.title}</h3>
-                      {/* <p className="text-gray-500 mb-6 line-clamp-3 text-ellipsis">{post.description}</p> */}
+                      <p className="text-gray-500 mb-6 line-clamp-3 text-ellipsis">{post.excerpt}</p>
                       </div>
                       <div className="flex items-center">
                           <div className="flex-shrink-0 relative aspect-square w-10">
-                              {/* <Image
+                              <Image
                                   className="rounded-full object-cover"
-                                  src={post.author.image.url}
+                                  src={process.env.NEXT_PUBLIC_CMS_URL + (post.author.image.url as string)}
                                   alt={post.author.image.alt}
                                   fill={true}
-                              /> */}
+                              />
                           </div>
                           <div className="ml-3">
                               <p className="text-sm font-medium text-gray-900">

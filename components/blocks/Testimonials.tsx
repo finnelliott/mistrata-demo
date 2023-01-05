@@ -64,7 +64,12 @@ const Testimonials: React.FC<Props> = ({ block }) => {
                         </div>
                 </div>
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-[4/3]">
-                    <Image src={image.url} alt={image.alt} fill={true} className="object-cover" />
+                    <Image 
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
+                        alt={block.image.alt}
+                        fill={true} 
+                        className="object-cover" 
+                    />
                 </div>
             </div>
         </Container>
