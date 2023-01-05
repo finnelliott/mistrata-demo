@@ -10,13 +10,9 @@ export default async function handler(req: NextRequest) {
   const normalFont = fetch(new URL('../../assets/Inter-Regular.ttf', import.meta.url)).then(
     (res) => res.arrayBuffer(),
   );
-  const semiboldFont = fetch(new URL('../../assets/Inter-SemiBold.ttf', import.meta.url)).then(
-    (res) => res.arrayBuffer(),
-  );
 
   try {
     const normalFontData = await normalFont;
-    const semiboldFontData = await semiboldFont;
     const { searchParams } = new URL(req.url);
     
     const hasTitle = searchParams.has('title');
@@ -58,7 +54,7 @@ export default async function handler(req: NextRequest) {
           <div tw={(parseInt(width as string) > 800 ? "p-32" : "p-24") + " bg-gray-50 flex w-full h-full justify-center items-center"}>
             <div tw="flex flex-col w-full h-full justify-between items-start">
             <div tw="w-full h-auto flex flex-col justify-center items-start">
-                {title && <span tw="text-7xl text-left font-semibold text-gray-900">{title == "Home" ? business.name : title}</span>}
+                {title && <span tw="text-7xl text-left font-normal text-gray-900">{title == "Home" ? business.name : title}</span>}
                 {description && <span tw="text-xl text-left font-normal mt-8 text-gray-700">{description}</span>}
             </div>
             <div tw="flex w-60 h-auto flex-col justify-end">
@@ -81,12 +77,6 @@ export default async function handler(req: NextRequest) {
             data: normalFontData,
             style: 'normal',
             weight: 400,
-          },
-          {
-            name: 'Inter',
-            data: semiboldFontData,
-            style: 'normal',
-            weight: 600
           },
         ],
       },
