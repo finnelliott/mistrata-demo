@@ -12,13 +12,6 @@ type Props = {
 
 const Testimonials: React.FC<Props> = ({ block }) => {
 
-    const image = {
-        url: "/images/testimonials.png",
-        alt: "testimonials",
-        width: 1920,
-        height: 1920
-    }
-
     const [ sliderIndex, setSliderIndex ] = useState(0)
 
     const back = () => {
@@ -69,6 +62,7 @@ const Testimonials: React.FC<Props> = ({ block }) => {
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                 </div>
             </div>

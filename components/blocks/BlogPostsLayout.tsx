@@ -31,6 +31,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                       alt={posts[pageIndex*7].image.alt}
                       fill={true}
                       className="object-cover"
+                      sizes="100vw"
                   />
               </div>
               <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis">{posts[pageIndex*7].title}</h3>
@@ -43,6 +44,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                           src={process.env.NEXT_PUBLIC_CMS_URL + (posts[pageIndex*7].author.image.url as string)}
                           alt={posts[pageIndex*7].author.image.alt}
                           fill={true}
+                          sizes="40px"
                       />
                   </div>
                   <div className="ml-3">
@@ -68,6 +70,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                         alt={post.image.alt}
                         fill={true}
                         className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                 </div>
                 <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis">{post.title}</h3>
@@ -80,6 +83,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                             src={process.env.NEXT_PUBLIC_CMS_URL + (post.author.image.url as string)}
                             alt={post.author.image.alt}
                             fill={true}
+                            sizes="40px"
                         />
                     </div>
                     <div className="ml-3">

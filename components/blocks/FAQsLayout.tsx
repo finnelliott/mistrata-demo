@@ -76,6 +76,7 @@ const FAQsLayout: React.FC<Props> = ({ block, data }) => {
                                 alt={member.image.alt}
                                 fill={true} 
                                 className="object-cover" 
+                                sizes="56px"
                             />
                         </div>
                     ))}

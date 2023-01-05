@@ -12,9 +12,10 @@ const TeamMemberCard:React.FC<Props> = ({ member }) => {
             <div className="relative w-full h-full aspect-square overflow-hidden block">
                 <Image
                     src={process.env.NEXT_PUBLIC_CMS_URL + (member.image.url as string)}
-                    fill={true}
                     alt={member.image.alt}
                     className="object-cover"
+                    fill={true}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
             </div>
             <div className="flex flex-col items-start mt-4">

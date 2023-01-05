@@ -26,6 +26,7 @@ const LatestBlogPosts: React.FC<Props> = ({ block }) => {
                               alt={post.image.alt}
                               fill={true}
                               className="object-cover"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           />
                       </div>
                       <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis">{post.title}</h3>
@@ -38,6 +39,7 @@ const LatestBlogPosts: React.FC<Props> = ({ block }) => {
                                   src={process.env.NEXT_PUBLIC_CMS_URL + (post.author.image.url as string)}
                                   alt={post.author.image.alt}
                                   fill={true}
+                                  sizes="40px"
                               />
                           </div>
                           <div className="ml-3">

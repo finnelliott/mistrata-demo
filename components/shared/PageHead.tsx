@@ -1,14 +1,11 @@
-import { use } from "react";
 import { Blog, Business, Page } from "../../payload-types";
 
-export default function PageHead({ page }: { page: Page | Blog } ) {
-    const business = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then((res) => res.json())) as Business
-
+export default function PageHead({ page, business }: { page: Page | Blog, business: Business } ) {
     const title = encodeURIComponent(page.title ?? "")
     const description = encodeURIComponent(page.meta.description ?? "")
-    const logo = process.env.NEXT_PUBLIC_CMS_URL+encodeURIComponent(business.logo.url ?? "")
+    const logo = process.env.NEXT_PUBLIC_CMS_URL+(business.logo.url ?? "")
     const name = encodeURIComponent(business.name ?? "")
-    const favicon = process.env.NEXT_PUBLIC_CMS_URL+encodeURIComponent(business.favicon.url ?? "")
+    const favicon = process.env.NEXT_PUBLIC_CMS_URL+(business.favicon.url ?? "")
 
     const meta_image_query = `title=${title}&description=${description}&logo=${logo}&business=${name}`
 
@@ -41,25 +38,6 @@ export default function PageHead({ page }: { page: Page | Blog } ) {
             content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og?${meta_image_query}`}
         />
         <meta property="og:description" content={page.meta.description} />
-
-        {/*Breadcrumb structured data */}
-        {/* <script type='application/ld+json' dangerouslySetInnerHTML={ { __html: breadcrumb_schema }} /> */}
-        {/*Local business/dentist structured data */}
-        <script type='application/ld+json' dangerouslySetInnerHTML={ { __html: `
-        {
-            "@context": "https://schema.org",
-            "@type": "Dentist",
-            "address": {
-              "@type": "PostalAddress",
-              ${business.address.city && `"addressLocality": "${business.address.city}",`}
-              "addressRegion": "${business.address.state}",
-              "streetAddress": "${business.address.line1}${business.address.line2 && `, ${business.address.line2}`}${business.address.line3 && `, ${business.address.line3}`}"
-            },
-            "description": "${business.description}",
-            "name": "${business.name}",
-            "telephone": "${business.phone}"
-        }
-        ` }} />
         </>
     )
 }

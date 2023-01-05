@@ -57,6 +57,7 @@ const Hero: React.FC<Props> = ({ block }) => {
                     className="object-cover"
                     alt={block.image.alt}
                     priority={true}
+                    sizes="100vw"
                 />
             </div>}
         </Container>

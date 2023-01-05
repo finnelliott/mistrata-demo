@@ -45,6 +45,7 @@ const CTA:React.FC<Props> = ({ block }) => {
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     <div className="p-4 flex flex-col overflow-hidden w-full h-min z-10 absolute bottom-0 left-0 right-0 bg-white bg-opacity-10 border-t border-white border-opacity-50 backdrop-blur-md">
                         {/* Rating */}
