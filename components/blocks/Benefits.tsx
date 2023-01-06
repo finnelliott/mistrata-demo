@@ -1,18 +1,9 @@
 import Icon from "../shared/Icon"
 import Container from "../shared/Container"
+import { Benefits } from "../../payload-types"
 
 type Props = {
-    block: {
-        benefits: {
-            icon: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp';
-            benefit: string;
-            description?: string;
-            id?: string;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'benefits';
-    }
+    block: Benefits
 }
 
 const Benefits: React.FC<Props> = ({ block }) => {

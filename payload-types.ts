@@ -28,7 +28,7 @@ export interface User {
 export interface Link {
   label: string;
   type?: 'page' | 'url' | 'phone_number' | 'email';
-  icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+  icon?: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
   page?: string | Page;
   url?: string;
   open_in_new_tab?: boolean;
@@ -51,7 +51,7 @@ export interface Hero {
 
 export interface Benefits {
   benefits: {
-    icon: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp';
+    icon: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
     benefit: string;
     description?: string;
     id?: string;
@@ -119,7 +119,7 @@ export interface FAQs {
     subheading: string;
     ctas: {
       label: string;
-      icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+      icon?: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
       type?: 'page' | 'url' | 'phone_number' | 'email';
       page?: string | Page;
       url?: string;
@@ -142,7 +142,7 @@ export interface PageHeader {
   subheading?: string;
   ctas: {
     label: string;
-    icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+    icon?: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
     type?: 'page' | 'url' | 'phone_number' | 'email';
     page?: string | Page;
     url?: string;
@@ -248,7 +248,7 @@ export interface OpenPositions {
   subheading?: string;
   ctas: {
     label: string;
-    icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+    icon?: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
     type?: 'page' | 'url' | 'phone_number' | 'email';
     page?: string | Page;
     url?: string;
@@ -278,7 +278,7 @@ export interface PlanPricing {
   heading: string;
   subheading?: string;
   benefits: {
-    icon: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp';
+    icon: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
     benefit: string;
     description?: string;
     id?: string;
@@ -310,7 +310,7 @@ export interface PricingTable {
 
 export interface ContactOptions {
   options: {
-    icon: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp';
+    icon: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
     heading: string;
     subheading?: string;
     cta: Link[];
@@ -337,7 +337,7 @@ export interface LatestBlogPosts {
   subheading?: string;
   ctas: {
     label: string;
-    icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+    icon?: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
     type?: 'page' | 'url' | 'phone_number' | 'email';
     page?: string | Page;
     url?: string;
@@ -423,7 +423,7 @@ export interface HeaderNavigation {
   id: string;
   links: {
     label: string;
-    icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+    icon?: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
     type?: 'page' | 'url' | 'phone_number' | 'email';
     page?: string | Page;
     url?: string;
@@ -436,7 +436,7 @@ export interface HeaderNavigation {
   }[];
   ctas: {
     label: string;
-    icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+    icon?: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
     type?: 'page' | 'url' | 'phone_number' | 'email';
     page?: string | Page;
     url?: string;
@@ -455,7 +455,7 @@ export interface FooterNavigation {
     heading: string;
     links: {
       label: string;
-      icon?: 'Plus' | 'Star' | 'ChatBubbleBottomCenterText' | 'HandThumbUp' | 'Phone';
+      icon?: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";
       type?: 'page' | 'url' | 'phone_number' | 'email';
       page?: string | Page;
       url?: string;
