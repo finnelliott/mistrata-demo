@@ -65,7 +65,7 @@ const Testimonials: React.FC<Props> = ({ block }) => {
                                 </div>}
                             </div>
                         </div>
-                        {testimonials.slice(1).map((testimonial) => <div className="hidden">
+                        {testimonials.length > 1 && testimonials.slice(1).map((testimonial, index) => <div key={index} className="hidden">
                             {/* Rating */}
                             <div className="flex flex-row mb-8 flex-none">
                                 <span className="sr-only">{testimonial.rating} star rating</span>{Array(testimonial.rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-amber-300"/>))}

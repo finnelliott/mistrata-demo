@@ -8,7 +8,18 @@ import { Team, TeamSlider as TeamSliderType } from "../../payload-types";
 import { useState } from "react";
 
 export default function TeamSliderLayout({ block, data }: { block: TeamSliderType, data: Team[] }) {
-    const [ team, setTeam ] = useState<Team[]>(data)
+
+    const sortByIndexThenName = (a: Team, b: Team) => {
+        if (a.index && b.index) {
+            if (a.index === b.index) {
+                return a.name.localeCompare(b.name)
+            }
+            return a.index - b.index
+        }
+        return a.name.localeCompare(b.name)
+    }
+    
+    const [ team, setTeam ] = useState<Team[]>(data.sort((a,b)=>sortByIndexThenName(a,b)))
 
     const forward = () => {
         setTeam([...team.slice(1), team[0]])

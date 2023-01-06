@@ -401,6 +401,7 @@ export interface Team {
   long_bio?: {
     [k: string]: unknown;
   }[];
+  index?: number;
   twitter_url?: string;
   linkedin_url?: string;
   website_url?: string;
