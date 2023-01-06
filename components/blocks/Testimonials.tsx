@@ -67,16 +67,16 @@ const Testimonials: React.FC<Props> = ({ block }) => {
                         </div>
                         {testimonials.length > 1 && testimonials.slice(1).map((testimonial, index) => <div key={index} className="hidden">
                             {/* Rating */}
-                            <div className="flex flex-row mb-8 flex-none">
-                                <span className="sr-only">{testimonial.rating} star rating</span>{Array(testimonial.rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-amber-300"/>))}
+                            <div>
+                                <span className="sr-only">{testimonial.rating} star rating</span>
                             </div>
                             {/* Quote */}
-                            <div className="shrink text-gray-900 text-xl md:text-2xl lg:text-4xl font-medium leading-snug mb-16 text-ellipsis line-clamp-none lg:line-clamp-4 xl:line-clamp-5">{testimonial.quote}</div>
+                            <div>{testimonial.quote}</div>
                             {/* Name, title and slider buttons */}
-                            <div className="absolute bottom-0 left-0 right-0 flex flex-row justify-between items-center flex-none w-full">
-                                <div className="flex flex-col flex-none">
-                                    <div className="text-gray-900 text-lg font-medium">{testimonial.name}</div>
-                                    <div className="text-gray-500 text-base font-medium">{testimonial.caption}</div>
+                            <div>
+                                <div>
+                                    <div>{testimonial.name}</div>
+                                    <div>{testimonial.caption}</div>
                                 </div>
                             </div>
                         </div>)}
