@@ -12,22 +12,32 @@ type Props = {
 
 const Testimonials: React.FC<Props> = ({ block }) => {
 
-    const [ sliderIndex, setSliderIndex ] = useState(0)
+    // const [ sliderIndex, setSliderIndex ] = useState(0)
 
-    const back = () => {
-        if (sliderIndex === 0) {
-            setSliderIndex(block.testimonials.length - 1)
-        } else {
-            setSliderIndex(sliderIndex - 1)
-        }
-    }
+    // const back = () => {
+    //     if (sliderIndex === 0) {
+    //         setSliderIndex(block.testimonials.length - 1)
+    //     } else {
+    //         setSliderIndex(sliderIndex - 1)
+    //     }
+    // }
+
+    // const forward = () => {
+    //     if (sliderIndex === block.testimonials.length - 1) {
+    //         setSliderIndex(0)
+    //     } else {
+    //         setSliderIndex(sliderIndex + 1)
+    //     }
+    // }
+
+    const [ testimonials, setTestimonials ] = useState<Testimonials["testimonials"]>(block.testimonials)
 
     const forward = () => {
-        if (sliderIndex === block.testimonials.length - 1) {
-            setSliderIndex(0)
-        } else {
-            setSliderIndex(sliderIndex + 1)
-        }
+        setTestimonials([...testimonials.slice(1), testimonials[0]])
+    }
+
+    const back = () => {
+        setTestimonials([testimonials[testimonials.length - 1], ...testimonials.slice(0, testimonials.length - 1)])
     }
 
     const button = "h-14 w-14 border border-gray-200 flex justify-center items-center rounded-full hover:bg-gray-50"
@@ -39,22 +49,37 @@ const Testimonials: React.FC<Props> = ({ block }) => {
                         <div className="relative py-8 flex flex-col overflow-hidden w-full h-full">
                             {/* Rating */}
                             <div className="flex flex-row mb-8 flex-none">
-                                <span className="sr-only">{block.testimonials[sliderIndex].rating} star rating</span>{Array(block.testimonials[sliderIndex].rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-amber-300"/>))}
+                                <span className="sr-only">{testimonials[0].rating} star rating</span>{Array(testimonials[0].rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-amber-300"/>))}
                             </div>
                             {/* Quote */}
-                            <div className="shrink text-gray-900 text-xl md:text-2xl lg:text-4xl font-medium leading-snug mb-16 text-ellipsis line-clamp-none lg:line-clamp-4 xl:line-clamp-5">{block.testimonials[sliderIndex].quote}</div>
+                            <div className="shrink text-gray-900 text-xl md:text-2xl lg:text-4xl font-medium leading-snug mb-16 text-ellipsis line-clamp-none lg:line-clamp-4 xl:line-clamp-5">{testimonials[0].quote}</div>
                             {/* Name, title and slider buttons */}
                             <div className="absolute bottom-0 left-0 right-0 flex flex-row justify-between items-center flex-none w-full">
                                 <div className="flex flex-col flex-none">
-                                    <div className="text-gray-900 text-lg font-medium">{block.testimonials[sliderIndex].name}</div>
-                                    <div className="text-gray-500 text-base font-medium">{block.testimonials[sliderIndex].caption}</div>
+                                    <div className="text-gray-900 text-lg font-medium">{testimonials[0].name}</div>
+                                    <div className="text-gray-500 text-base font-medium">{testimonials[0].caption}</div>
                                 </div>
-                                <div className="flex flex-row flex-none space-x-4">
+                                {testimonials.length > 1 && <div className="flex flex-row flex-none space-x-4">
                                     <button onClick={() => back()} className={button}><span className="sr-only">Backwards</span><ArrowLeftIcon className="w-6 h-6 text-gray-500"/></button>
                                     <button onClick={() => forward()} className={button}><span className="sr-only">Forwards</span><ArrowRightIcon className="w-6 h-6 text-gray-500"/></button>
-                                </div>
+                                </div>}
                             </div>
                         </div>
+                        {testimonials.slice(1).map((testimonial) => <div className="hidden">
+                            {/* Rating */}
+                            <div className="flex flex-row mb-8 flex-none">
+                                <span className="sr-only">{testimonial.rating} star rating</span>{Array(testimonial.rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-amber-300"/>))}
+                            </div>
+                            {/* Quote */}
+                            <div className="shrink text-gray-900 text-xl md:text-2xl lg:text-4xl font-medium leading-snug mb-16 text-ellipsis line-clamp-none lg:line-clamp-4 xl:line-clamp-5">{testimonial.quote}</div>
+                            {/* Name, title and slider buttons */}
+                            <div className="absolute bottom-0 left-0 right-0 flex flex-row justify-between items-center flex-none w-full">
+                                <div className="flex flex-col flex-none">
+                                    <div className="text-gray-900 text-lg font-medium">{testimonial.name}</div>
+                                    <div className="text-gray-500 text-base font-medium">{testimonial.caption}</div>
+                                </div>
+                            </div>
+                        </div>)}
                 </div>
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-[4/3]">
                     <Image 
