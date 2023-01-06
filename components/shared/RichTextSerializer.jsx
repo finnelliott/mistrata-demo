@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import escapeHTML from 'escape-html';
 import { Text } from 'slate';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const serialize = (children) => children.map((node, i) => {
   if (Text.isText(node)) {
@@ -12,14 +13,6 @@ const serialize = (children) => children.map((node, i) => {
         <strong key={i}>
           {text}
         </strong>
-      );
-    }
-
-    if (node.code) {
-      text = (
-        <pre><code class="language-css" key={i}>
-          {text}
-        </code></pre>
       );
     }
 
@@ -107,25 +100,34 @@ const serialize = (children) => children.map((node, i) => {
         </li>
       );
     case 'link':
-      return (
-        <a
-          href={escapeHTML(node.url)}
-          key={i}
-        >
-          {serialize(node.children)}
-        </a>
-      );
+      if (node.linkType == "internal") {
+        return (
+          <Link href={node.doc.relationTo == "blog" ? "/blog/" + node.doc.value.slug : "/"+node.doc.value.slug} target={node.newTab ? "_blank" : "_self"}>
+            {serialize(node.children)}
+          </Link>
+        )
+      } else {
+        return (
+          <a
+            href={escapeHTML(node.url)}
+            key={i}
+          >
+            {serialize(node.children)}
+          </a>
+        );
+      }
+      
     case 'upload':
       return (
-        // <div className="relative w-full aspect-[4/3] shadow-md bg-white">
-        //       <Image
-        //           src={`https://${process.env.NEXT_PUBLIC_AWS_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/images/${node.value.filename}`}
-        //           alt={node.value.alt}
-        //           layout="fill"
-        //           objectFit="contain"
-        //         />
-        // </div>
-        <div>Set up required</div>
+        <div className="relative w-full aspect-[4/3] shadow-md bg-white">
+              <Image
+                  src={process.env.NEXT_PUBLIC_CMS_URL + (node.value.url ?? "")}
+                  alt={node.value.alt}
+                  fill={true}
+                  className="object-cover"
+                  sizes="100vw"
+                />
+        </div>
       )
 
     default:
