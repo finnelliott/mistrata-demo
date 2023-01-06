@@ -115,8 +115,8 @@ export interface FAQs {
     id?: string;
   }[];
   cta: {
-    heading: string;
-    subheading: string;
+    heading?: string;
+    subheading?: string;
     ctas: {
       label: string;
       icon?: "Thumbs Up" | "Plus" | "Chat Bubble" | "Star" | "Phone" | "Person" | "Map Pin" | "Smiley Face" | "Sad Face" | "Arrow Right" | "Arrow Left" | "Arrow Up" | "Arrow Down" | "Chevron Right" | "Chevron Left" | "Chevron Up" | "Chevron Down" | "Building" | "Calendar" | "Credit Card" | "Envelope" | "Document" | "Globe" | "Fire" | "Heart" | "Link";

@@ -15,7 +15,7 @@ const Benefits: React.FC<Props> = ({ block }) => {
                     {block.benefits.map((item, index) => (
                     <div key={index} className="relative flex flex-col gap-6">
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600 sm:shrink-0 border-4 border-primary-50">
-                        <div className="h-6 w-6">
+                        <div className="h-6 w-6 stroke-1.5">
                             <Icon icon={item.icon} aria-hidden="true" />
                         </div>
                         </div>

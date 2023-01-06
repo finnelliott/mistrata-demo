@@ -18,7 +18,7 @@ const ContactOptions: React.FC<Props> = ({ block }) => {
                 {block.options.map((option, index) => (
                     <div key={index} className="flex flex-col items-start p-6 bg-gray-50 rounded-xl">
                         <div className="flex items-center justify-center h-12 w-12 p-3 rounded-xl bg-primary-600 text-white">
-                            <div className="h-6 w-6 stroke-2">
+                            <div className="h-6 w-6 stroke-1.5">
                                 <Icon icon={option.icon} />
                             </div>
                         </div>

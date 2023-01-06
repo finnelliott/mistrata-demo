@@ -40,7 +40,7 @@ const FAQsLayout: React.FC<Props> = ({ block, data }) => {
                         <Disclosure as="div" key={faq.question} className="">
                             {({ open }) => (
                             <>
-                                <dt className={classNames(open ? "lg:bg-gray-50" : "" ," rounded-lg px-0 lg:px-8 py-8 text-lg")}>
+                                <dt className={classNames(open ? "lg:bg-gray-50 rounded-t-lg" : "rounded-lg" ," px-0 lg:px-8 py-8 text-lg")}>
                                 <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-400">
                                     <span className="font-medium text-lg text-gray-900">{faq.question}</span>
                                     <span className="ml-6 flex h-7 items-center">
@@ -57,17 +57,17 @@ const FAQsLayout: React.FC<Props> = ({ block, data }) => {
                                     </span>
                                 </Disclosure.Button>
                                 </dt>
-                                <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                                <p className="text-base text-gray-600">{serialize(faq.answer)}</p>
-                                </Disclosure.Panel>
-                            </>
+                                <Disclosure.Panel as="dd" className="pr-12 lg:bg-gray-50 px-0 lg:px-8 pb-8 rounded-b-lg">
+                                    <p className="text-base text-gray-600">{serialize(faq.answer)}</p>
+                                    </Disclosure.Panel>
+                                </>
                             )}
                         </Disclosure>
                         ))}
                     </dl>
                 </div>
             </div>
-            {<div className="bg-gray-50 rounded-lg w-full flex flex-col space-y-8 items-center justify-center p-8">
+            {block.cta.heading && block.cta.ctas.length > 0 && <div className="bg-gray-50 rounded-lg w-full flex flex-col space-y-8 items-center justify-center p-8">
                 <div className="flex flex-row -space-x-4 items-end">
                     {data.slice(0,3).map((member, index) => (
                         <div key={index} className={(data.length > 1 ? "first:-rotate-12 last:rotate-12 first:w-12 first:h-12 last:w-12 last:h-12 first:z-10 last:z-10 " : "") + "relative w-14 h-14 rounded-full overflow-hidden bg-white border-gray-50 border-2 z-20"}>
