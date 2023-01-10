@@ -67,7 +67,7 @@ const FAQsLayout: React.FC<Props> = ({ block, data }) => {
                     </dl>
                 </div>
             </div>
-            {block.cta.heading && block.cta.ctas.length > 0 && <div className="bg-gray-50 rounded-lg w-full flex flex-col space-y-8 items-center justify-center p-8">
+            {block.cta.heading && block.cta.ctas.length > 0 && <div className="bg-gray-50 rounded-lg w-full flex flex-col space-y-8 items-center justify-center p-8 mt-8">
                 <div className="flex flex-row -space-x-4 items-end">
                     {data.slice(0,3).map((member, index) => (
                         <div key={index} className={(data.length > 1 ? "first:-rotate-12 last:rotate-12 first:w-12 first:h-12 last:w-12 last:h-12 first:z-10 last:z-10 " : "") + "relative w-14 h-14 rounded-full overflow-hidden bg-white border-gray-50 border-2 z-20"}>
