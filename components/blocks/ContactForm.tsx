@@ -6,39 +6,69 @@ import PrimaryButton from "../shared/PrimaryButton";
 import SectionHeader from "../shared/SectionHeader";
 import Container from "../shared/Container"
 import { ContactForm } from "../../payload-types";
+import { useState } from "react";
 
 type Props = {
     block: ContactForm
 }
 
 const ContactForm: React.FC<Props> = ({ block }) => {
+    const [ data, setData ] = useState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+        message: ""
+    })
+    const [ submitting, setSubmitting ] = useState(false)
 
+    const handleSubmit = async () => {
+        setSubmitting(true)
+        await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/contact-form-submissions`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+            if (res.status === 200) {
+                setData({
+                    first_name: "",
+                    last_name: "",
+                    email: "",
+                    phone: "",
+                    message: ""
+                })
+                setSubmitting(false)
+            }
+        }) 
+    }
     return (
         <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
                 <div className="col-span-1 w-full">
                         <div className="relative py-8 flex flex-col w-full h-full">
                             <SectionHeader preheading={block.preheading} heading={block.heading} subheading={block.subheading} />
-                            <form className="grid grid-cols-2 gap-4 lg:gap-6">
+                            <form onSubmit={(e) => {e.preventDefault(); handleSubmit()}} className="grid grid-cols-2 gap-4 lg:gap-6">
                                 <div className="col-span-2 sm:col-span-1">
                                     <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">First name</label>
-                                    <input type="text" required={true} name="first_name" id="first_name" placeholder="First name" className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <input type="text" value={data.first_name} onChange={(e) => setData({...data, first_name: e.target.value})} required={true} name="first_name" id="first_name" placeholder="First name" className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                 </div>
                                 <div className="col-span-2 sm:col-span-1">
                                     <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">Last name</label>
-                                    <input type="text" required={false} name="last_name" id="last_name" placeholder="Last name" className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <input type="text" value={data.last_name} onChange={(e) => setData({...data, last_name: e.target.value})}  required={false} name="last_name" id="last_name" placeholder="Last name" className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                 </div>
                                 <div className="col-span-2">
                                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                                    <input type="text" required={true} name="email" id="email" placeholder="johndoe@mail.com" className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <input type="text" value={data.email} onChange={(e) => setData({...data, email: e.target.value})}  required={true} name="email" id="email" placeholder="johndoe@mail.com" className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                 </div>
                                 <div className="col-span-2">
                                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
-                                    <input type="text" required={false} name="phone" id="phone" placeholder="+44 7000 000 000" className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <input type="text"  value={data.phone} onChange={(e) => setData({...data, phone: e.target.value})} required={false} name="phone" id="phone" placeholder="+44 7000 000 000" className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                 </div>
                                 <div className="col-span-2">
                                     <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
-                                    <textarea name="message" required={true} id="message" placeholder="Your message" rows={4} className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <textarea value={data.message} onChange={(e) => setData({...data, message: e.target.value})} name="message" required={true} id="message" placeholder="Your message" rows={4} className="mt-1 py-2.5 px-3.5 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                 </div>
                                 <div className="col-span-2 relative flex items-start">
                                     <div className="flex h-5 items-center">
@@ -56,7 +86,7 @@ const ContactForm: React.FC<Props> = ({ block }) => {
                                         You agree to our{` `}
                                     </label>
                                     <span id="comments-description" className="text-gray-500">
-                                        <span className="sr-only">You agree to our </span><Link href="/privacy" className="underline hover:text-gray-700">privacy policy</Link>.
+                                        <span className="sr-only">You agree to our </span><Link href="/privacy" className="underline hover:text-gray-700 focus:outline-primary-600">privacy policy</Link>.
                                     </span>
                                     </div>
                                 </div>

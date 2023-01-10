@@ -8,14 +8,14 @@ type Props = {
 
 const CMSLink:React.FC<Props> = ({ link, children }) => {
     if (link.type == "page" && link.page) {
-        return <Link href={`/${typeof link.page !== "string" ? link.page.slug : link.page}`}>{children || link.label}</Link>
+        return <Link href={`/${typeof link.page !== "string" ? link.page.slug : link.page}`} className="">{children || link.label}</Link>
     } else if (link.type == "url") {
-        return <a href={link.url} target="_blank" rel="noreferrer noopener">{children}</a>
+        return <a href={link.url} target="_blank" rel="noreferrer noopener" className="">{children}</a>
     } else if (link.type == "phone_number") {
-        return <a href={`tel:${link.phone_number}`}>{children}</a>
-    } else {
-        return <div>{JSON.stringify(link)}</div>
-    }
+        return <a href={`tel:${link.phone_number}`} className="">{children}</a>
+    } else if (link.type == "email") {
+        return <a href={`mailto:${link.email}`} className="">{children}</a>
+    } else return null;
 }
 
 export default CMSLink
