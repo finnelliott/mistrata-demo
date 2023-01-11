@@ -40,7 +40,7 @@ const OpenPositions: React.FC<Props> = ({ block }) => {
                                 {position.close_date && <div className="mt-2 flex items-center text-sm text-gray-500">
                                     <CalendarIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                                     <p>
-                                    Closing on <time dateTime={position.close_date}>{new Date(position.close_date).toLocaleDateString()}</time>
+                                    Closing on <time dateTime={position.close_date}>{new Date(position.close_date).toDateString()}</time>
                                     </p>
                                 </div>}
                                 </div>
