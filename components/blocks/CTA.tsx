@@ -71,7 +71,7 @@ const CTA:React.FC<Props> = ({ block }) => {
                     <div className="flex w-full flex-col justify-between items-start">
                         <div className="flex flex-col place-items-start max-w-3xl mb-8">
                             {block.preheading && <div className="text-base font-semibold text-primary-700 text-left mb-3">{block.preheading}</div>}
-                            <h2 className="text-4xl text-gray-900 text-left font-semibold">{block.heading}</h2>
+                            <h2 className="sm:text-3xl text-2xl text-gray-900 text-left font-semibold">{block.heading}</h2>
                             {block.subheading && <div className="text-lg font-normal text-gray-500 mt-5">{block.subheading}</div>}
                         </div>
                         <div className="flex space-x-2">
