@@ -17,7 +17,8 @@ import { Business, HeaderNavigation } from "../../payload-types";
 export default function HeaderNavigationLayout ({ data, business }: { data: HeaderNavigation, business: Business } ) {
 
     return (
-        <Popover className="relative bg-white z-50">
+        <div className="sticky top-0 left-0 right-0 z-50 shadow-sm">
+        <Popover className="bg-white relative z-50">
         {/* Container */}
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
             {/* Desktop container */}
@@ -92,7 +93,7 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
             leaveTo="opacity-0 scale-100"
         >
             <Popover.Panel focus className="absolute inset-x-0 top-0 origin-top-right transform transition md:hidden bg-white">
-            <div className="divide-y-2 divide-gray-50 rounded-b-lg bg-white shadow-lg ring-1 ring-primary-600 ring-opacity-5">
+            <div className="divide-y-2 divide-gray-50 bg-white shadow-lg ring-1 ring-primary-600 ring-opacity-5">
                 <div className="py-6 px-4 sm:px-8">
                 <div className="flex items-center justify-between">
                     <div className="flex-none justify-start lg:w-0 lg:flex-1">
@@ -135,5 +136,6 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
             </Popover.Panel>
         </Transition>
         </Popover>
+        </div>
     )
 }

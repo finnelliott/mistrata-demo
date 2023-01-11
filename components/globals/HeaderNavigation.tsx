@@ -8,7 +8,7 @@ const HeaderNavigation = () => {
     const business = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then(res => res.json()).then(data => data as Business))
 
     return (
-        <div><HeaderNavigationLayout data={data} business={business} /></div>
+        <HeaderNavigationLayout data={data} business={business} />
   )
 }
 
