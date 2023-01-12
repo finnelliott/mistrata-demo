@@ -47,15 +47,15 @@ const CTA:React.FC<Props> = ({ block }) => {
                         className="object-cover" 
                         sizes="(max-width: 1024px) 100vw, 50vw"
                     />
-                    <div className="p-4 flex flex-col overflow-hidden w-full h-min z-10 absolute bottom-0 left-0 right-0 bg-white bg-opacity-10 border-t border-white border-opacity-50 backdrop-blur-xl">
+                    <div className="hidden p-4 md:flex flex-col overflow-hidden w-full h-min z-10 absolute bottom-0 left-0 right-0 bg-white bg-opacity-10 border-t border-white border-opacity-50 backdrop-blur-xl">
                         {/* Rating */}
                         <div className="flex flex-row mt-2 mb-4 flex-none">
                             {Array(block.testimonials[sliderIndex].rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-white"/>))}
                         </div>
                         {/* Quote */}
-                        <div className="shrink text-white text-xl md:text-2xl font-medium leading-snug mb-16 text-ellipsis line-clamp-none lg:line-clamp-4 xl:line-clamp-5">{block.testimonials[sliderIndex].quote}</div>
+                        <div className="shrink text-white text-xl md:text-2xl font-medium leading-snug mb-4 text-ellipsis line-clamp-none lg:line-clamp-4 xl:line-clamp-4">{block.testimonials[sliderIndex].quote}</div>
                         {/* Name, title and slider buttons */}
-                        <div className="absolute bottom-0 left-0 right-0 flex flex-row justify-between items-center flex-none w-full px-4 pb-4">
+                        <div className="relative flex flex-row justify-between items-center flex-none w-full">
                             <div className="flex flex-col flex-none">
                                 <div className="text-white text-lg font-medium">{block.testimonials[sliderIndex].name}</div>
                                 <div className="text-gray-100 text-base font-medium">{block.testimonials[sliderIndex].caption}</div>
