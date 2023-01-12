@@ -2,14 +2,15 @@ import SectionHeader from "../shared/SectionHeader"
 import Container from "../shared/Container"
 import { CalendarIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import Image from "next/image"
-import { OpenPositions as OpenPositionsType } from "../../payload-types"
+import { Business, OpenPositions as OpenPositionsType } from "../../payload-types"
+import { use } from "react"
 
 type Props = {
     block: OpenPositionsType
 }
 
 const OpenPositions: React.FC<Props> = ({ block }) => {
-
+    const business = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then(res => res.json()).then(data => data as Business))
     return (
         <Container>
             <SectionHeader preheading={block.preheading} heading={block.heading} subheading={block.subheading} />
@@ -19,7 +20,7 @@ const OpenPositions: React.FC<Props> = ({ block }) => {
                     <ul role="list" className="divide-y border-y border-gray-200 divide-gray-200">
                         {block.positions.map((position) => (
                         <li key={position.id}>
-                            <a href="mailto:sad@sad.co.uk" className="block hover:opacity-80">
+                            <a href={`mailto:${business.email}?subject=${position.title} Application&body=Please include a copy of your CV alongside a short covering letter. Thank you in advance for your application.`} className="block hover:opacity-80">
                             <div className="py-6">
                                 <div className="flex items-center justify-between">
                                 <p className="truncate text-lg font-medium text-gray-900">{position.title}</p>

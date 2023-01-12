@@ -509,6 +509,7 @@ export interface Business {
   description: string;
   logo: Media;
   favicon: Media;
+  email: string;
   address: {
     line1: string;
     line2?: string;
