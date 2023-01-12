@@ -23,7 +23,7 @@ const LocationsLayout: React.FC<Props> = ({ block }) => {
                     loading="lazy"
                     allowFullScreen={true}
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_MAPS_EMBED_API_KEY}&q=${encodeURIComponent([block.locations[0].address.line1, block.locations[0].address.line2, block.locations[0].address.line3, block.locations[0].address.city, block.locations[0].address.state, block.locations[0].address.postal_code].filter(Boolean).join(", "))}`} 
+                    src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_MAPS_EMBED_API_KEY}&q=${encodeURIComponent(Object.values(block.locations[0].address).filter(Boolean).join(", "))}`} 
                 />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16">
