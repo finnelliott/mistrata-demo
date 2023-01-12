@@ -34,12 +34,12 @@ const CTA:React.FC<Props> = ({ block }) => {
         }
     }
 
-    const button = "h-10 w-10 border border-gray-50 flex justify-center items-center rounded-full hover:bg-gray-50 hover:text-gray-600 text-white"
+    const button = "h-10 w-10 border border-gray-50 flex justify-center items-center rounded-full hover:bg-gray-50 hover:bg-opacity-10 text-white"
 
     return (
         <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-[4/3]">
+                <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-square">
                     <Image 
                         src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
                         alt={block.image.alt}
@@ -47,7 +47,7 @@ const CTA:React.FC<Props> = ({ block }) => {
                         className="object-cover" 
                         sizes="(max-width: 1024px) 100vw, 50vw"
                     />
-                    <div className="p-4 flex flex-col overflow-hidden w-full h-min z-10 absolute bottom-0 left-0 right-0 bg-white bg-opacity-10 border-t border-white border-opacity-50 backdrop-blur-md">
+                    <div className="p-4 flex flex-col overflow-hidden w-full h-min z-10 absolute bottom-0 left-0 right-0 bg-white bg-opacity-10 border-t border-white border-opacity-50 backdrop-blur-xl">
                         {/* Rating */}
                         <div className="flex flex-row mt-2 mb-4 flex-none">
                             {Array(block.testimonials[sliderIndex].rating).fill(0).map((_, index) => (<StarIcon key={index} className="w-5 h-5 mr-1 text-white"/>))}
