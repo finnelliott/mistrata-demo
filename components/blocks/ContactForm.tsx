@@ -7,42 +7,65 @@ import SectionHeader from "../shared/SectionHeader";
 import Container from "../shared/Container"
 import { ContactForm } from "../../payload-types";
 import { useState } from "react";
+import axios from "axios";
 
 type Props = {
     block: ContactForm
 }
 
+type Form = {
+    first_name: string,
+    last_name: string,
+    email: string,
+    phone: string,
+    message: string,
+}
+
 const ContactForm: React.FC<Props> = ({ block }) => {
-    const [ data, setData ] = useState({
+    const [ data, setData ] = useState<Form>({
         first_name: "",
         last_name: "",
         email: "",
         phone: "",
         message: ""
     })
+
+    let t: keyof Form;
+    
     const [ submitting, setSubmitting ] = useState(false)
 
     const handleSubmit = async () => {
         setSubmitting(true)
-        await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/contact-form-submissions`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then(res => {
-            if (res.status === 200) {
-                setData({
-                    first_name: "",
-                    last_name: "",
-                    email: "",
-                    phone: "",
-                    message: ""
-                })
-                setSubmitting(false)
-            }
-        }) 
+        const formData = new FormData()
+
+        let key: keyof typeof data;
+        for (key in data) formData.append(key, data[key])
+
+        fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/contact-form-submissions`, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: formData
+        })
+        // if successful, setSubmitting to false and handle errors
+        .then(() => {
+            setSubmitting(false)
+            setData({
+                first_name: "",
+                last_name: "",
+                email: "",
+                phone: "",
+                message: ""
+            })
+            alert("Your message has been sent. We will get back to you as soon as possible.")
+        }
+        )
+        .catch((err) => {
+            setSubmitting(false)
+            alert("An error occured. Please try again later.")
+        }
+        )
     }
+
     return (
         <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
@@ -73,19 +96,19 @@ const ContactForm: React.FC<Props> = ({ block }) => {
                                 <div className="col-span-2 relative flex items-start">
                                     <div className="flex h-5 items-center">
                                     <input
-                                        id="comments"
-                                        aria-describedby="comments-description"
-                                        name="comments"
+                                        id="permissions"
+                                        aria-describedby="permissions-description"
+                                        name="permissions"
                                         type="checkbox"
                                         required={true} 
                                         className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                                     />
                                     </div>
                                     <div className="ml-3 text-sm">
-                                    <label htmlFor="comments" className="font-normal text-gray-700">
+                                    <label htmlFor="permissions" className="font-normal text-gray-700">
                                         You agree to our{` `}
                                     </label>
-                                    <span id="comments-description" className="text-gray-500">
+                                    <span id="permissions-description" className="text-gray-500">
                                         <span className="sr-only">You agree to our </span><Link href="/privacy" className="underline hover:text-gray-700 focus:outline-primary-600">privacy policy</Link>.
                                     </span>
                                     </div>

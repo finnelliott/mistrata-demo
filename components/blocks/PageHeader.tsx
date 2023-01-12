@@ -9,12 +9,6 @@ type Props = {
     block: PageHeader
 }
 
-const AboutHeader = {
-    preheading: "About Us",
-    heading: "About South Avenue Dental",
-    subheading: "South Avenue Dental is a family owned and operated dental practice in the heart of the South Avenue neighborhood in Rochester, NY. We are committed to providing the highest quality dental care in a comfortable and friendly environment. We are dedicated to providing the best possible care for our patients and their families. We are committed to providing the highest quality dental care in a comfortable and friendly environment. We are dedicated to providing the best possible care for our patients and their families.",
-}
-
 const PageHeader:React.FC<Props> = ({ block }) => {
     return (
         <Container>
