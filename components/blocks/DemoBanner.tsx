@@ -4,7 +4,7 @@ import SecondaryButton from '../shared/SecondaryButton';
 
 const DemoBanner = () => {
     return (
-        <div className="bg-primary-50 border-b border-primary-200">
+        <div className="bg-primary-50 border-b border-primary-200 hidden">
             {/* sticky top-0 left-0 right-0 z-50 */}
             <div className="mx-auto max-w-7xl py-3 px-3 sm:px-8 lg:px-8">
             <div className="flex items-center justify-between flex-col sm:flex-row">
