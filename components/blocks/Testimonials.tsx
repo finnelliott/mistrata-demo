@@ -87,7 +87,7 @@ const Testimonials: React.FC<Props> = ({ block }) => {
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 
-                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        sizes="(max-width: 1024px) 100vw-32px, 50vw-16px"
                     />
                 </div>
             </div>
