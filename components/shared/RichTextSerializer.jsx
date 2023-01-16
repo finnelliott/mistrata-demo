@@ -45,9 +45,8 @@ const serialize = (children) => children.map((node, i) => {
         </h1>
       );
     case 'h2':
-        const idFromText = node.children[0].text.replaceAll(' ', '-').toLowerCase()
         return (
-          <h2 key={i} id={idFromText}>
+          <h2 key={i}>
             {serialize(node.children)}
           </h2>
         );
