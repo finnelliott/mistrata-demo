@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params: { slug } }: { params: { slug: string } }) {
-  const page = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${slug}`).then((res) => res.json()).then((res) => res.docs[0])
+  const page = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${slug}`).then((res) => res.json()).then((res) => { if (res.docs.length == 0) { return notFound() } else { return res }}).then((res) => res.docs[0])
   if (!page.layout) {
     return notFound()
   }

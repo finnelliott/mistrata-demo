@@ -411,6 +411,7 @@ export interface Team {
 
 export interface Treatment {
   id: string;
+  title: string;
   name: string;
   slug?: string;
   price?: string;

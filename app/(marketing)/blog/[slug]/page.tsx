@@ -1,27 +1,26 @@
 import { notFound } from "next/navigation";
+import { use } from "react";
 import BlogPost from "../../../../components/shared/BlogPost";
 import StructuredData from "../../../../components/shared/StructuredData";
-import { Blog as BlogType, Business } from "../../../../payload-types";
-
-const getBlogPosts = async () => {
-  const blog_posts = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/blog`).then((res) => res.json()).then((res) => res.docs)
-  return blog_posts
-}
+import getBlogPostBySlug from "../../../../lib/getBlogPostBySlug";
+import getBlogPosts from "../../../../lib/getBlogPosts";
+import getBusiness from "../../../../lib/getBusiness";
 
 export async function generateStaticParams() {
   const blog_posts = await getBlogPosts();
-
-  return blog_posts.map((blog: BlogType) => ({
-    slug: blog.slug,
-  }));
+  return blog_posts.map((blog) => (
+    {
+      slug: blog.slug,
+    }
+  ));
 }
 
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
-  const blog_post = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/blog?where[slug][equals]=${slug}`).then((res) => res.json()).then((res) => res.docs[0])
-  if (!blog_post.layout) {
+export default function Page({ params: { slug } }: { params: { slug: string } }) {
+  const blog_post = use(getBlogPostBySlug(slug))
+  if (!blog_post) {
     return notFound()
   }
-  const business = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then((res) => res.json()) as Business
+  const business = use(getBusiness())
 
   return (
     <>
@@ -30,4 +29,3 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
     </>
   )
 }
-
