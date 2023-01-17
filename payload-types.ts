@@ -415,6 +415,30 @@ export interface Treatment {
   slug?: string;
   price?: string;
   category: 'preventative' | 'restorative' | 'cosmetic' | 'orthodontics';
+  layout: (
+    | Hero
+    | Benefits
+    | Testimonials
+    | TeamSlider
+    | CTA
+    | FAQs
+    | PageHeader
+    | RichText
+    | Testimonial
+    | Locations
+    | TeamGrid
+    | OpenPositions
+    | PlanPricing
+    | PricingTable
+    | ContactOptions
+    | ContactForm
+    | LatestBlogPosts
+    | BlogPosts
+  )[];
+  meta: {
+    title?: string;
+    description?: string;
+  };
   createdAt: string;
   updatedAt: string;
 }
