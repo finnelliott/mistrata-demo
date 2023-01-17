@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import BlockSerializer from "../../../components/shared/BlockSerializer";
 import StructuredData from "../../../components/shared/StructuredData";
 import { Business, Page as PageType } from "../../../payload-types";
@@ -17,6 +18,9 @@ export async function generateStaticParams() {
 
 export default async function Page({ params: { slug } }: { params: { slug: string } }) {
   const page = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${slug}`).then((res) => res.json()).then((res) => res.docs[0])
+  if (!page.layout) {
+    return notFound()
+  }
   const business = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then((res) => res.json()) as Business
 
   return (
