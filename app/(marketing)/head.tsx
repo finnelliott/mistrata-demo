@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation"
 import { use } from "react"
 import PageHead from "../../components/shared/PageHead"
 import getBusiness from "../../lib/getBusiness"

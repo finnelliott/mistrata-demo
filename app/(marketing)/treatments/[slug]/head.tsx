@@ -5,7 +5,7 @@ import getBusiness from "../../../../lib/getBusiness"
 import getTreatmentBySlug from "../../../../lib/getTreatmentBySlug"
 
 export default function Head({ params }: { params: { slug: string } }) {
-    const page = use(getTreatmentBySlug(params.slug))
+    const page = use(getTreatmentBySlug(params.slug.toLowerCase()))
     if (!page) {
       return null;
     }

@@ -5,7 +5,7 @@ import getBlogPostBySlug from "../../../../lib/getBlogPostBySlug"
 import getBusiness from "../../../../lib/getBusiness"
 
 export default function Head({ params }: { params: { slug: string } }) {
-    const page = use(getBlogPostBySlug(params.slug))
+    const page = use(getBlogPostBySlug(params.slug.toLowerCase()))
     if (!page) {
       return null;
     }
