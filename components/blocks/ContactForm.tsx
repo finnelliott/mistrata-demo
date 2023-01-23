@@ -119,7 +119,7 @@ const ContactForm: React.FC<Props> = ({ block }) => {
                 </div>
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-square">
                     <Image 
-                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.sizes.medium_square.url as string)}
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 

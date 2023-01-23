@@ -25,9 +25,9 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
         <>
           <Link href={`/blog/${posts[pageIndex*7].slug}`} key={posts[pageIndex*7].title} className="h-full flex flex-col justify-between hover:scale-[99%] transform duration-200 pb-16">
               <div>
-              <div className="relative mb-8 block aspect-video sm:aspect-[3/1]">
+              <div className="relative mb-8 block aspect-video">
                   <Image
-                      src={process.env.NEXT_PUBLIC_CMS_URL + (posts[pageIndex*7].image.url as string)}
+                      src={process.env.NEXT_PUBLIC_CMS_URL + (posts[pageIndex*7].image.sizes.large_landscape.url as string)}
                       alt={posts[pageIndex*7].image.alt}
                       fill={true}
                       className="object-cover"
@@ -41,7 +41,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                   <div className="flex-shrink-0 relative aspect-square w-10">
                       <Image
                           className="rounded-full object-cover"
-                          src={process.env.NEXT_PUBLIC_CMS_URL + (posts[pageIndex*7].author.image.url as string)}
+                          src={process.env.NEXT_PUBLIC_CMS_URL + (posts[pageIndex*7].author.image.sizes.small_square.url as string)}
                           alt={posts[pageIndex*7].author.image.alt}
                           fill={true}
                           sizes="40px"
@@ -66,7 +66,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                 <div>
                 <div className="relative mb-8 aspect-video">
                     <Image
-                        src={process.env.NEXT_PUBLIC_CMS_URL + (post.image.url as string)}
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (post.image.sizes.small_landscape.url as string)}
                         alt={post.image.alt}
                         fill={true}
                         className="object-cover"
@@ -80,7 +80,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                     <div className="flex-shrink-0 relative object-cover aspect-square w-10">
                         <Image
                             className="rounded-full"
-                            src={process.env.NEXT_PUBLIC_CMS_URL + (post.author.image.url as string)}
+                            src={process.env.NEXT_PUBLIC_CMS_URL + (post.author.image.sizes.small_square.url as string)}
                             alt={post.author.image.alt}
                             fill={true}
                             sizes="40px"

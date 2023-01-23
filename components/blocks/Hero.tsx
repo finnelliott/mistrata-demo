@@ -52,7 +52,7 @@ const Hero: React.FC<Props> = ({ block }) => {
             {block.image.url && <div className="relative aspect-video z-20 bg-transparent">
                 <div className="absolute top-0 left-0 aspect-video w-full bg-gradient-to-t from-black to-white z-20 opacity-10"></div>
                 <Image
-                    src={(process.env.NEXT_PUBLIC_CMS_URL + block.image.url) as string}
+                    src={(process.env.NEXT_PUBLIC_CMS_URL + (block.image.sizes.large_landscape.url as string))}
                     fill={true} 
                     className="object-cover"
                     alt={block.image.alt}

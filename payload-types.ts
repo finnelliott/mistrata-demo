@@ -412,7 +412,6 @@ export interface Team {
 export interface Treatment {
   id: string;
   title: string;
-  name: string;
   slug?: string;
   price?: string;
   category: 'preventative' | 'restorative' | 'cosmetic' | 'orthodontics';
@@ -523,6 +522,80 @@ export interface Media {
   filesize?: number;
   width?: number;
   height?: number;
+  sizes: {
+    small_landscape: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    medium_landscape: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    large_landscape: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    small_square: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    medium_square: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    large_square: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    small_portrait: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    medium_portrait: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    large_portrait: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+  };
   createdAt: string;
   updatedAt: string;
 }
