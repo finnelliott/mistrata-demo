@@ -10,7 +10,7 @@ import { Business, Page as PageType } from "../../../payload-types";
 export async function generateStaticParams() {
   const pages = await getPages();
 
-  return pages?.map((page: PageType) => ({
+  return pages?.filter((page) => page.slug !== "home").map((page: PageType) => ({
     slug: page.slug,
   }));
 }
