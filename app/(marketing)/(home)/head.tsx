@@ -4,7 +4,7 @@ import getBusiness from "../../../lib/getBusiness";
 import getPageBySlug from "../../../lib/getPageBySlug";
 import { Business } from "../../../payload-types"
 
-export default async function Head() {
+export default function Head() {
   const page = use(getPageBySlug("home"))
   if (!page) {
     return null;

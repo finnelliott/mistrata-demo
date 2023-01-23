@@ -5,7 +5,7 @@ import { use } from "react";
 import getBusiness from "../../../lib/getBusiness";
 import getPageBySlug from "../../../lib/getPageBySlug";
 
-export default async function Page() {
+export default function Page() {
   const page = use(getPageBySlug("home"))
   if (!page) {
     return null;
