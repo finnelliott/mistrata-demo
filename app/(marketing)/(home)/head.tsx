@@ -1,12 +1,18 @@
+import { use } from "react";
 import PageHead from "../../../components/shared/PageHead"
+import getBusiness from "../../../lib/getBusiness";
+import getPageBySlug from "../../../lib/getPageBySlug";
 import { Business } from "../../../payload-types"
 
 export default async function Head() {
-    const page = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"home"}`).then((res) => res.json()).then((res) => res.docs[0])
-    const business = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then((res) => res.json()) as Business
+  const page = use(getPageBySlug("home"))
+  if (!page) {
+    return null;
+  }
+  const business = use(getBusiness())
     return (
       <>
-      <PageHead page={page} business={business} />
+      <PageHead page={page} business={business as Business} />
       </>
     )
 }

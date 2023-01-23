@@ -1,14 +1,20 @@
 import BlockSerializer from "../../../components/shared/BlockSerializer";
 import StructuredData from "../../../components/shared/StructuredData";
 import { Business } from "../../../payload-types";
+import { use } from "react";
+import getBusiness from "../../../lib/getBusiness";
+import getPageBySlug from "../../../lib/getPageBySlug";
 
 export default async function Page() {
-  const page = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"home"}`).then((res) => res.json()).then((res) => res.docs[0])
-  const business = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then((res) => res.json()) as Business
+  const page = use(getPageBySlug("home"))
+  if (!page) {
+    return null;
+  }
+  const business = use(getBusiness())
   return (
     <>
       <BlockSerializer page={page as any} />
-      <StructuredData business={business} />
+      <StructuredData business={business as Business} />
     </>
   )
 }
