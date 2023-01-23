@@ -5,12 +5,12 @@ import StructuredData from "../../../components/shared/StructuredData";
 import getBusiness from "../../../lib/getBusiness";
 import getPageBySlug from "../../../lib/getPageBySlug";
 import getPages from "../../../lib/getPages";
-import { Page as PageType } from "../../../payload-types";
+import { Business, Page as PageType } from "../../../payload-types";
 
 export async function generateStaticParams() {
   const pages = await getPages();
 
-  return pages.map((page: PageType) => ({
+  return pages?.map((page: PageType) => ({
     slug: page.slug,
   }));
 }
@@ -24,7 +24,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   return (
     <>
       <BlockSerializer page={page as any} />
-      <StructuredData business={business} />
+      <StructuredData business={business as Business} />
     </>
   )
 }
