@@ -120,7 +120,7 @@ const serialize = (children) => children.map((node, i) => {
       return (
         <div className="relative w-full aspect-[4/3] shadow-md bg-white">
               <Image
-                  src={process.env.NEXT_PUBLIC_CMS_URL + (node.value.sizes.large_landscape.url ?? "")}
+                  src={process.env.NEXT_PUBLIC_CMS_URL + (node.value.url ?? "")}
                   alt={node.value.alt}
                   fill={true}
                   className="object-cover"

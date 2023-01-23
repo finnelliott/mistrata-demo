@@ -45,7 +45,7 @@ const PricingTable: React.FC<Props> = ({ block }) => {
                         {category.treatments.map((treatment, index) => (
                             <tr key={index} className={index % 2 == 0 ? "" : ""}>
                             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">
-                                {treatment.title}
+                                {treatment.name}
                             </td>
                             <td className="whitespace-nowrap px-3 py-4 pr-4 text-sm text-gray-500 text-right sm:pr-6 lg:pr-8">{treatment.price}</td>
                             </tr>

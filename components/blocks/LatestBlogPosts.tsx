@@ -22,7 +22,7 @@ const LatestBlogPosts: React.FC<Props> = ({ block }) => {
                       <div>
                       <div className="relative mb-8 aspect-video">
                           <Image
-                              src={process.env.NEXT_PUBLIC_CMS_URL + (post.image.sizes.small_landscape.url as string)}
+                              src={process.env.NEXT_PUBLIC_CMS_URL + (post.image.url as string)}
                               alt={post.image.alt}
                               fill={true}
                               className="object-cover"
@@ -36,7 +36,7 @@ const LatestBlogPosts: React.FC<Props> = ({ block }) => {
                           <div className="flex-shrink-0 relative aspect-square w-10">
                               <Image
                                   className="rounded-full object-cover"
-                                  src={process.env.NEXT_PUBLIC_CMS_URL + (post.author.image.sizes.small_square.url as string)}
+                                  src={process.env.NEXT_PUBLIC_CMS_URL + (post.author.image.url as string)}
                                   alt={post.author.image.alt}
                                   fill={true}
                                   sizes="40px"

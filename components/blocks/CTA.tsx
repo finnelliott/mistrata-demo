@@ -41,7 +41,7 @@ const CTA:React.FC<Props> = ({ block }) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-square">
                     <Image 
-                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.sizes.medium_square.url as string)}
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 

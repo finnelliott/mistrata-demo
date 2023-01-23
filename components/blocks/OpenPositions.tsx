@@ -53,7 +53,7 @@ const OpenPositions: React.FC<Props> = ({ block }) => {
                 </div>
                 <div className="col-span-1 bg-gray-100 w-full relative block aspect-[4/3]">
                     <Image 
-                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.sizes.medium_landscape.url as string)}
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 
