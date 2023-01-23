@@ -16,20 +16,18 @@ export async function generateStaticParams() {
   ));
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const page = use(getTreatmentBySlug(params.slug))
+export default async function Page({ params }: { params: { slug: string } }) {
+  const page = await getTreatmentBySlug(params.slug)
   if (!page) {
     return notFound()
   }
   if (!page.layout) {
     return notFound()
   }
-  const business = use(getBusiness())
 
   return (
     <>
       <BlockSerializer page={page as any} />
-      <StructuredData business={business as Business} />
     </>
   )
 }

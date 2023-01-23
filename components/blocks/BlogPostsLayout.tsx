@@ -23,9 +23,9 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
   return (
       <Container>
         <>
-          <Link href={`/blog/${posts[pageIndex*7].slug}`} key={posts[pageIndex*7].title} className="h-full flex flex-col justify-between hover:scale-[99%] transform duration-200 pb-16">
-              <div>
-              <div className="relative mb-8 block aspect-video sm:aspect-[3/1]">
+          <Link href={`/blog/${posts[pageIndex*7].slug}`} key={posts[pageIndex*7].title} className="h-full grid grid-cols-1 lg:grid-cols-3 hover:scale-[99%] transform duration-200 pb-16 gap-8">
+              <div className="col-span-1">
+              <div className="relative block aspect-video">
                   <Image
                       src={process.env.NEXT_PUBLIC_CMS_URL + (posts[pageIndex*7].image.url as string)}
                       alt={posts[pageIndex*7].image.alt}
@@ -34,10 +34,11 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                       sizes="100vw"
                   />
               </div>
-              <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis">{posts[pageIndex*7].title}</h3>
-              <p className="text-gray-500 mb-6 line-clamp-3 text-ellipsis">{posts[pageIndex*7].excerpt}</p>
               </div>
-              <div className="flex items-center">
+              <div className="flex flex-col items-start col-span-1 h-full justify-center lg:col-span-2">
+                  <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis">{posts[pageIndex*7].title}</h3>
+                  <p className="text-gray-500 mb-6 line-clamp-3 text-ellipsis">{posts[pageIndex*7].excerpt}</p>
+                  <div className="flex items-center">
                   <div className="flex-shrink-0 relative aspect-square w-10">
                       <Image
                           className="rounded-full object-cover"
@@ -56,6 +57,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                           <span aria-hidden="true">&middot;</span>
                           <span>{posts[pageIndex*7].reading_time}{` `}min read</span>
                       </div>
+                  </div>
                   </div>
               </div>
           </Link>

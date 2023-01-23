@@ -5,12 +5,12 @@ import getBusiness from "../../../../lib/getBusiness"
 import getTreatmentBySlug from "../../../../lib/getTreatmentBySlug"
 import { Business } from "../../../../payload-types"
 
-export default function Head({ params }: { params: { slug: string } }) {
-    const page = use(getTreatmentBySlug(params.slug.toLowerCase()))
+export default async function Head({ params }: { params: { slug: string } }) {
+    const page = await getTreatmentBySlug(params.slug.toLowerCase())
     if (!page) {
       return null;
     }
-    const business = use(getBusiness())
+    const business = await getBusiness()
     return (
       <>
       <PageHead page={page} business={business as Business} />

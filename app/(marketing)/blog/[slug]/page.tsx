@@ -16,17 +16,15 @@ export async function generateStaticParams() {
   ));
 }
 
-export default function Page({ params: { slug } }: { params: { slug: string } }) {
-  const blog_post = use(getBlogPostBySlug(slug))
+export default async function Page({ params: { slug } }: { params: { slug: string } }) {
+  const blog_post = await getBlogPostBySlug(slug)
   if (!blog_post) {
     return notFound()
   }
-  const business = use(getBusiness())
 
   return (
     <>
       <BlogPost blog_post={blog_post} />
-      <StructuredData business={business as Business} />
     </>
   )
 }

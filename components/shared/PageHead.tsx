@@ -1,15 +1,15 @@
 import { Blog, Business, Page, Treatment } from "../../payload-types";
 
 export default function PageHead({ page, business }: { page?: Page | Blog | Treatment, business: Business } ) {
-    const favicon = process.env.NEXT_PUBLIC_CMS_URL ?? "" +(business.favicon.sizes.small_square ?? "")
-    const logo = process.env.NEXT_PUBLIC_CMS_URL ?? "" +(business.logo.url ?? "")
+    const favicon = (process.env.NEXT_PUBLIC_CMS_URL && business.favicon.url) ? process.env.NEXT_PUBLIC_CMS_URL + business.favicon.url : null
+    const logo = (process.env.NEXT_PUBLIC_CMS_URL && business.logo.url) ? process.env.NEXT_PUBLIC_CMS_URL + business.logo.url : null
     const name = encodeURIComponent(business.name ?? "")
 
     if (page) {
         const title = page.title ? encodeURIComponent(page.title ?? "") : ""
         const description = encodeURIComponent(page.meta.description ?? "")
     
-        const meta_image_query = `title=${title}&description=${description}&logo=${logo}&business=${name}`
+        const meta_image_query = `title=${title}&description=${description}${logo && `&logo=${logo}`}&business=${name}`
     
         return (
             <>
@@ -21,7 +21,7 @@ export default function PageHead({ page, business }: { page?: Page | Blog | Trea
             />
     
             {/* <!-- Favicon --> */}
-            <link rel="icon" type="image/png" sizes="16x16" href={favicon} />
+            {favicon && <link rel="icon" type="image/png" sizes="16x16" href={favicon} />}
     
             {/* <!-- Twitter Card data --> */}
             <meta name="twitter:card" content="summary" />
@@ -44,7 +44,7 @@ export default function PageHead({ page, business }: { page?: Page | Blog | Trea
         )
     } else {
 
-        const meta_image_query = `logo=${logo}&business=${name}`
+        const meta_image_query = `${logo && `&logo=${logo}`}&business=${name}`
 
         return (
             <>
@@ -52,7 +52,7 @@ export default function PageHead({ page, business }: { page?: Page | Blog | Trea
             <title>{business.name}</title>
     
             {/* <!-- Favicon --> */}
-            <link rel="icon" type="image/png" sizes="16x16" href={favicon} />
+            {favicon && <link rel="icon" type="image/png" sizes="16x16" href={favicon} />}
     
             {/* <!-- Twitter Card data --> */}
             <meta name="twitter:card" content="summary" />

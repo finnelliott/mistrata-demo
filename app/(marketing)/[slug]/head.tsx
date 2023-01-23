@@ -4,12 +4,12 @@ import getBusiness from "../../../lib/getBusiness";
 import getPageBySlug from "../../../lib/getPageBySlug";
 import { Business } from "../../../payload-types";
 
-export default function Head({ params }: { params: { slug: string } }) {
-  const page = use(getPageBySlug(params.slug.toLowerCase()))
+export default async function Head({ params }: { params: { slug: string } }) {
+  const page = await getPageBySlug(params.slug.toLowerCase())
   if (!page) {
     return null;
   }
-  const business = use(getBusiness())
+  const business = await getBusiness()
   return (
     <>
     <PageHead page={page} business={business as Business} />

@@ -14,9 +14,10 @@ const Hero: React.FC<Props> = ({ block }) => {
 
     return (
         <Container>
-            <div className="flex flex-col place-items-start mb-16 text-left w-full pt-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-12">
+            <div className="flex flex-col items-start justify-center text-left w-full col-span-1">
                 <div className="space-y-4 flex flex-col place-items-start w-full">
-                    <h1 className="font-medium font-display text-gray-900 text-3xl sm:text-5xl text-left max-w-4xl leading-snug sm:leading-normal">{block.heading}</h1>
+                    <h1 className="font-medium font-display text-gray-900 text-3xl sm:text-5xl text-left max-w-4xl leading-snug sm:leading-tight">{block.heading}</h1>
                     <p className="font-normal text-lg text-gray-600 text-left max-w-2xl">{block.subheading}</p>
                 </div>
                 <div className="flex flex-row space-x-2 w-full place-items-start mt-8">
@@ -49,7 +50,7 @@ const Hero: React.FC<Props> = ({ block }) => {
                 
             </div>
             {/* image */}
-            {block.image.url && <div className="relative aspect-video z-20 bg-transparent">
+            {block.image.url && <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-[4/3]">
                 <div className="absolute top-0 left-0 aspect-video w-full bg-gradient-to-t from-black to-white z-20 opacity-10"></div>
                 <Image
                     src={(process.env.NEXT_PUBLIC_CMS_URL + block.image.url) as string}
@@ -60,6 +61,7 @@ const Hero: React.FC<Props> = ({ block }) => {
                     sizes="100vw"
                 />
             </div>}
+            </div>
         </Container>
     )
 }

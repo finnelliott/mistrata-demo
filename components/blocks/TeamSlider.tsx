@@ -8,7 +8,7 @@ type Props = {
 
 const TeamSlider: React.FC<Props> = ({ block }) => {
 
-    const data = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/team`).then(res => res.json()).then(data => data.docs as Team[]))
+    const data = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/team?limit=100`).then(res => res.json()).then(data => data.docs as Team[]))
 
     return (
         <div><TeamSliderLayout block={block} data={data} /></div>

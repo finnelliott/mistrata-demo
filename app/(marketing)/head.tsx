@@ -1,13 +1,16 @@
-import { use } from "react"
-import PageHead from "../../components/shared/PageHead"
-import getBusiness from "../../lib/getBusiness"
-import { Business } from "../../payload-types"
+// import { use } from "react"
+// import PageHead from "../../components/shared/PageHead"
+// import getBusiness from "../../lib/getBusiness"
 
-export default function Head({ params }: { params: { slug: string } }) {
-    const business = use(getBusiness())
-    return (
-      <>
-      <PageHead business={business as Business} />
-      </>
-    )
+// export default async function Head() {
+//     const business = await getBusiness()
+//     return (
+//       <>
+//       <PageHead business={business} />
+//       </>
+//     )
+// }
+
+export default async function Head() {
+  return <></>;
 }

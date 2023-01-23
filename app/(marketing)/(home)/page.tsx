@@ -10,11 +10,9 @@ export default function Page() {
   if (!page) {
     return null;
   }
-  const business = use(getBusiness())
   return (
     <>
       <BlockSerializer page={page as any} />
-      <StructuredData business={business as Business} />
     </>
   )
 }
