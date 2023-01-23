@@ -5,10 +5,11 @@ import getTreatments from "../../../../lib/getTreatments";
 import getBusiness from "../../../../lib/getBusiness";
 import getTreatmentBySlug from "../../../../lib/getTreatmentBySlug";
 import { use } from "react";
+import { Business } from "../../../../payload-types";
 
 export async function generateStaticParams() {
   const treatments = await getTreatments();
-  return treatments.filter((treatment) => treatment.layout).map((treatment) => (
+  return treatments?.filter((treatment) => treatment.layout).map((treatment) => (
     {
       slug: treatment.slug,
     }
@@ -28,7 +29,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   return (
     <>
       <BlockSerializer page={page as any} />
-      <StructuredData business={business} />
+      <StructuredData business={business as Business} />
     </>
   )
 }

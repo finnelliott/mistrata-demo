@@ -3,6 +3,7 @@ import { use } from "react"
 import PageHead from "../../../../components/shared/PageHead"
 import getBlogPostBySlug from "../../../../lib/getBlogPostBySlug"
 import getBusiness from "../../../../lib/getBusiness"
+import { Business } from "../../../../payload-types"
 
 export default function Head({ params }: { params: { slug: string } }) {
     const page = use(getBlogPostBySlug(params.slug.toLowerCase()))
@@ -12,7 +13,7 @@ export default function Head({ params }: { params: { slug: string } }) {
     const business = use(getBusiness())
     return (
       <>
-      <PageHead page={page} business={business} />
+      <PageHead page={page} business={business as Business} />
       </>
     )
 }
