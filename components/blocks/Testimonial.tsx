@@ -18,6 +18,7 @@ const Testimonial:React.FC<Props> = ({ block }) => {
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 
+                        sizes="(max-width: 1024px) 100vw, 33vw"
                     />
                 </div>
                 <div className="col-span-1 lg:col-span-2 w-full">

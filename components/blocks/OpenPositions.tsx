@@ -57,6 +57,7 @@ const OpenPositions: React.FC<Props> = ({ block }) => {
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                 </div>
             </div>
