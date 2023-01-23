@@ -5,11 +5,11 @@ import StructuredData from "../../../../components/shared/StructuredData";
 import getBlogPostBySlug from "../../../../lib/getBlogPostBySlug";
 import getBlogPosts from "../../../../lib/getBlogPosts";
 import getBusiness from "../../../../lib/getBusiness";
-import { Business } from "../../../../payload-types";
+import { Blog, Business } from "../../../../payload-types";
 
 export async function generateStaticParams() {
   const blog_posts = await getBlogPosts();
-  return blog_posts?.map((blog) => (
+  return blog_posts.map((blog: Blog) => (
     {
       slug: blog.slug,
     }

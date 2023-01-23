@@ -1,8 +1,8 @@
 import { Blog, Business, Page, Treatment } from "../../payload-types";
 
 export default function PageHead({ page, business }: { page?: Page | Blog | Treatment, business: Business } ) {
-    const favicon = process.env.NEXT_PUBLIC_CMS_URL+(business.favicon.url ?? "")
-    const logo = process.env.NEXT_PUBLIC_CMS_URL+(business.logo.url ?? "")
+    const favicon = process.env.NEXT_PUBLIC_CMS_URL ?? "" +(business.favicon.sizes.small_square ?? "")
+    const logo = process.env.NEXT_PUBLIC_CMS_URL ?? "" +(business.logo.url ?? "")
     const name = encodeURIComponent(business.name ?? "")
 
     if (page) {

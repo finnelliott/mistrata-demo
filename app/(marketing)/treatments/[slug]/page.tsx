@@ -5,11 +5,11 @@ import getTreatments from "../../../../lib/getTreatments";
 import getBusiness from "../../../../lib/getBusiness";
 import getTreatmentBySlug from "../../../../lib/getTreatmentBySlug";
 import { use } from "react";
-import { Business } from "../../../../payload-types";
+import { Business, Treatment } from "../../../../payload-types";
 
 export async function generateStaticParams() {
   const treatments = await getTreatments();
-  return treatments?.filter((treatment) => treatment.layout).map((treatment) => (
+  return treatments?.filter((treatment: Treatment) => treatment.layout).map((treatment: Treatment) => (
     {
       slug: treatment.slug,
     }

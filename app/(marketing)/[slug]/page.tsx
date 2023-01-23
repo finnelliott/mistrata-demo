@@ -10,7 +10,7 @@ import { Business, Page as PageType } from "../../../payload-types";
 export async function generateStaticParams() {
   const pages = await getPages();
 
-  return pages?.filter((page) => page.slug !== "home").map((page: PageType) => ({
+  return pages.filter((page: PageType) => page.slug !== "home").map((page: PageType) => ({
     slug: page.slug,
   }));
 }
@@ -24,7 +24,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   return (
     <>
       <BlockSerializer page={page as any} />
-      <StructuredData business={business as Business} />
+      <StructuredData business={business} />
     </>
   )
 }
