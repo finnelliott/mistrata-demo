@@ -8,10 +8,14 @@ type Props = {
 
 const Benefits: React.FC<Props> = ({ block }) => {
 
+    function classNames(...classes: string[]) {
+        return classes.filter(Boolean).join(' ')
+    }
+
     return (
         <Container>
             <div className="max-w-lg md:max-w-none">
-                <div className="flex flex-col md:flex-row space-y-12 md:space-x-12 md:space-y-0">
+                <div className={classNames(block.benefits.length % 3 == 0 ? "md:grid-cols-3" : "md:grid-cols-2", "gap-12 grid grid-cols-1")}>
                     {block.benefits.map((item, index) => (
                     <div key={index} className="relative flex flex-col gap-6">
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600 sm:shrink-0 border-4 border-primary-50">
