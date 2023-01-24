@@ -1,11 +1,8 @@
 import { notFound } from "next/navigation";
-import { use } from "react";
 import BlogPost from "../../../../components/shared/BlogPost";
-import StructuredData from "../../../../components/shared/StructuredData";
 import getBlogPostBySlug from "../../../../lib/getBlogPostBySlug";
 import getBlogPosts from "../../../../lib/getBlogPosts";
-import getBusiness from "../../../../lib/getBusiness";
-import { Blog, Business } from "../../../../payload-types";
+import { Blog } from "../../../../payload-types";
 
 export async function generateStaticParams() {
   const blog_posts = await getBlogPosts();

@@ -353,6 +353,59 @@ export interface LatestBlogPosts {
   blockType: 'latest-blog-posts';
 }
 
+export interface FeaturedTreatments {
+  preheading?: string;
+  heading: string;
+  subheading?: string;
+  ctas: {
+    label: string;
+    icon?:
+      | 'Thumbs Up'
+      | 'Plus'
+      | 'Star'
+      | 'Chat Bubble'
+      | 'Phone'
+      | 'Person'
+      | 'Map Pin'
+      | 'Smiley Face'
+      | 'Sad Face'
+      | 'Arrow Right'
+      | 'Arrow Left'
+      | 'Arrow Up'
+      | 'Arrow Down'
+      | 'Chevron Right'
+      | 'Chevron Left'
+      | 'Chevron Up'
+      | 'Chevron Down'
+      | 'Building'
+      | 'Calendar'
+      | 'Credit Card'
+      | 'Envelope'
+      | 'Document'
+      | 'Globe'
+      | 'Fire'
+      | 'Heart'
+      | 'Link';
+    type?: 'page' | 'url' | 'phone_number' | 'email';
+    page?: string | Page;
+    url?: string;
+    open_in_new_tab?: boolean;
+    phone_number?: string;
+    email?: string;
+    id?: string;
+    blockName?: string;
+    blockType: 'link';
+  }[];
+  featured_treatments: {
+    treatment: Treatment;
+    image: Media;
+    id?: string;
+  }[];
+  id?: string;
+  blockName?: string;
+  blockType: 'featured-treatments';
+};
+
 export interface BlogPosts {
   id?: string;
   blockName?: string;
@@ -382,6 +435,7 @@ export interface Page {
     | ContactForm
     | LatestBlogPosts
     | BlogPosts
+    | FeaturedTreatments
   )[];
   meta: {
     title?: string;
@@ -412,7 +466,7 @@ export interface Team {
 export interface Treatment {
   id: string;
   title: string;
-  name: string;
+  description: string;
   slug?: string;
   price?: string;
   category: 'preventative' | 'restorative' | 'cosmetic' | 'orthodontics';

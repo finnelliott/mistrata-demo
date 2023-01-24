@@ -4,41 +4,41 @@ import { use } from "react";
 import Container from "../../components/shared/Container";
 
 export default function NotFound() {
-    const treatments = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"treatments"}`).then((res) => res.json()).then((res) => res.docs[0]))
-    const blog = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"blog"}`).then((res) => res.json()).then((res) => res.docs[0]))
-    const about = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"about"}`).then((res) => res.json()).then((res) => res.docs[0]))
-    const contact = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"contact"}`).then((res) => res.json()).then((res) => res.docs[0]))
+    // const treatments = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"treatments"}`).then((res) => res.json()).then((res) => res.docs[0]))
+    // const blog = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"blog"}`).then((res) => res.json()).then((res) => res.docs[0]))
+    // const about = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"about"}`).then((res) => res.json()).then((res) => res.docs[0]))
+    // const contact = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"contact"}`).then((res) => res.json()).then((res) => res.docs[0]))
 
-    const navigation = []
+    // const navigation = []
 
-    if (treatments) {
-        navigation.push({
-            "heading": "Treatments",
-            "subheading": "Find out more about our treatments and services.",
-            "href": "/treatments",
-        })
-    }
-    if (blog) {
-        navigation.push({
-            "heading": "Blog",
-            "subheading": "Read the latest news and updates from our blog.",
-            "href": "/blog",
-        })
-    }
-    if (about) {
-        navigation.push({
-            "heading": "About",
-            "subheading": "Learn more about our practice and team.",
-            "href": "/about",
-        })
-    }
-    if (contact) {
-        navigation.push({
-            "heading": "Contact",
-            "subheading": "Get in touch",
-            "href": "/contact",
-        })
-    }
+    // if (treatments) {
+    //     navigation.push({
+    //         "heading": "Treatments",
+    //         "subheading": "Find out more about our treatments and services.",
+    //         "href": "/treatments",
+    //     })
+    // }
+    // if (blog) {
+    //     navigation.push({
+    //         "heading": "Blog",
+    //         "subheading": "Read the latest news and updates from our blog.",
+    //         "href": "/blog",
+    //     })
+    // }
+    // if (about) {
+    //     navigation.push({
+    //         "heading": "About",
+    //         "subheading": "Learn more about our practice and team.",
+    //         "href": "/about",
+    //     })
+    // }
+    // if (contact) {
+    //     navigation.push({
+    //         "heading": "Contact",
+    //         "subheading": "Get in touch",
+    //         "href": "/contact",
+    //     })
+    // }
 
     return (
         <div className="">
@@ -51,7 +51,7 @@ export default function NotFound() {
                     </div>
                 </div>
             </Container>
-            <Container>
+            {/* <Container>
                 <nav className="space-y-1 max-w-xl">
                 {navigation.map((item) => (
                     <Link
@@ -67,7 +67,7 @@ export default function NotFound() {
                     </Link>
                 ))}
                 </nav>
-            </Container>
+            </Container> */}
         </div>
     )
 }
