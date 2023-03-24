@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  distDir: './_static',
+  distDir: '_static',
   experimental: {
     appDir: true,
   },
