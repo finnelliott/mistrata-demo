@@ -1,9 +1,0 @@
-{
-  "/api/og": "pages/api/og.js",
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/api/robots": "pages/api/robots.js",
-  "/api/sitemap": "pages/api/sitemap.js",
-  "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
-}

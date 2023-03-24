@@ -1,6 +1,0 @@
-{
-  "/(marketing)/[slug]/page": "app/(marketing)/[slug]/page.js",
-  "/(marketing)/(home)/page": "app/(marketing)/(home)/page.js",
-  "/(marketing)/blog/[slug]/page": "app/(marketing)/blog/[slug]/page.js",
-  "/(marketing)/treatments/[slug]/page": "app/(marketing)/treatments/[slug]/page.js"
-}

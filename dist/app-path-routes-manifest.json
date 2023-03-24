@@ -1,6 +1,0 @@
-{
-  "/(marketing)/[slug]/page": "/[slug]",
-  "/(marketing)/(home)/page": "/",
-  "/(marketing)/blog/[slug]/page": "/blog/[slug]",
-  "/(marketing)/treatments/[slug]/page": "/treatments/[slug]"
-}
