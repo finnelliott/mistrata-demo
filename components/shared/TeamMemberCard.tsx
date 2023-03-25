@@ -19,9 +19,9 @@ const TeamMemberCard:React.FC<Props> = ({ member }) => {
                 />
             </div>
             <div className="flex flex-col items-start mt-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-primary-700 text-lg mb-4">{member.role}</p>
-                <p className="text-gray-600 font-normal text-base">{member.short_bio}</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 dark:text-white">{member.name}</h3>
+                <p className="text-primary-700 text-lg mb-4 dark:text-primary-300">{member.role}</p>
+                <p className="text-gray-600 font-normal text-base dark:text-gray-400">{member.short_bio}</p>
             </div>
             <ul role="list" className="flex space-x-5">
                 {member.twitter_url && <li className="mt-4">

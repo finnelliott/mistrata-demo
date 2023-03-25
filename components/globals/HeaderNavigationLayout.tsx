@@ -18,7 +18,7 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
 
     return (
         <div className="sticky top-0 left-0 right-0 z-50 shadow-sm">
-        <Popover className="bg-white relative z-50">
+        <Popover className="bg-white relative z-50 dark:bg-primary-950">
         {/* Container */}
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
             {/* Desktop container */}
@@ -33,12 +33,13 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
                             height={40}
                             width={((business.logo.width as number)/(business.logo.height as number)) * 40}
                             alt={business.logo.alt}
+                            className="dark:invert"
                         />
                     </div>
                     </Link>
                 </div>
                 <div className="-my-2 -mr-2 md:hidden">
-                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-primary-600 hover:bg-gray-100 hover:text-gray-500">
+                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white dark:bg-primary-950 p-2 text-primary-600 dark:text-primary-300 hover:bg-gray-100 dark:hover:bg-primary-800 hover:text-gray-500 dark:hover:text-primary-400">
                     <span className="sr-only">Open menu</span>
                     <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -46,7 +47,7 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
                 {/* Links */}
                 <nav className="flex-1 hidden space-x-8 md:flex justify-start items-center">
                     {data.links.map((item, index) => (
-                        <div key={index} className="text-base font-medium text-gray-600 hover:text-gray-500" >
+                        <div key={index} className="text-base font-medium text-gray-600 hover:text-gray-500 dark:text-gray-300 dark:hover:text-gray-400" >
                             <CMSLink link={item}/>
                         </div>
                     ))}
@@ -59,7 +60,7 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
                         {((index % 2 == 0) && (data.ctas.length > 1)) ?
                         <SecondaryButton>
                             <>
-                            {cta.icon && <div className="w-5 h-5 mr-2 text-gray-900 stroke-current">
+                            {cta.icon && <div className="w-5 h-5 mr-2 text-gray-900 stroke-current dark:text-gray-50">
                                 <Icon icon={cta.icon} />
                             </div>}
                             {cta.label}
@@ -68,7 +69,7 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
                         :
                         <PrimaryButton>
                             <>
-                            {cta.icon && <div className="w-5 h-5 mr-2 text-white stroke-current">
+                            {cta.icon && <div className="w-5 h-5 mr-2 text-white stroke-current dark:text-gray-900">
                                 <Icon icon={cta.icon} />
                             </div>}
                             {cta.label}
@@ -92,8 +93,8 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-100"
         >
-            <Popover.Panel focus className="absolute inset-x-0 top-0 origin-top-right transform transition md:hidden bg-white">
-            <div className="divide-y-2 divide-gray-50 bg-white shadow-lg ring-1 ring-primary-600 ring-opacity-5">
+            <Popover.Panel focus className="absolute inset-x-0 top-0 origin-top-right transform transition md:hidden bg-white dark:bg-primary-950">
+            <div className="divide-y-2 divide-gray-50 bg-white shadow-lg ring-1 ring-primary-600 ring-opacity-5 dark:divide-gray-800 dark:bg-primary-950 dark:ring-primary-300">
                 <div className="py-6 px-4 sm:px-8">
                 <div className="flex items-center justify-between">
                     <div className="flex-none justify-start lg:w-0 lg:flex-1">
@@ -105,13 +106,14 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
                             height={40}
                             width={((business.logo.width as number)/(business.logo.height as number)) * 40}
                             alt={business.logo.alt}
+                            className="dark:invert"
                         />
                     </div>
                         
                     </Link>
                     </div>
                     <div className="-mr-2">
-                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-primary-600 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-600">
+                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-primary-600 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:bg-primary-950 dark:text-primary-300 dark:hover:bg-primary-800 dark:hover:text-primary-400 dark:focus:ring-primary-300">
                         <span className="sr-only">Close menu</span>
                         <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -121,7 +123,7 @@ export default function HeaderNavigationLayout ({ data, business }: { data: Head
                 <div className="space-y-6 py-6 px-5">
                 <ul className="flex flex-col gap-y-4">
                     {data.links.map((item, index) => (
-                        <li key={index} className="text-base font-medium text-gray-600 hover:text-gray-700"><CMSLink link={item} /></li>
+                        <li key={index} className="text-base font-medium text-gray-600 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"><CMSLink link={item} /></li>
                     ))}
                 </ul>
                 {data.ctas?.length > 0 && <ul>

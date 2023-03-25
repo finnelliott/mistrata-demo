@@ -29,7 +29,7 @@ export default function TeamSliderLayout({ block, data }: { block: TeamSliderTyp
         setTeam([team[team.length - 1], ...team.slice(0, team.length - 1)])
     }
 
-    const button = "h-14 w-14 border border-gray-200 flex justify-center items-center rounded-full hover:bg-gray-50"
+    const button = "h-14 w-14 border border-gray-200 flex justify-center items-center rounded-full hover:bg-gray-50 dark:hover:bg-primary-900"
 
     return (
         <Container>
@@ -42,8 +42,8 @@ export default function TeamSliderLayout({ block, data }: { block: TeamSliderTyp
                 ))}
             </div>
             {team.length > 4 && <div className="flex flex-row flex-none space-x-4">
-                <button onClick={() => back()} className={button}><span className="sr-only">Backwards</span><ArrowLeftIcon className="w-6 h-6 text-gray-500"/></button>
-                <button onClick={() => forward()} className={button}><span className="sr-only">Forwards</span><ArrowRightIcon className="w-6 h-6 text-gray-500"/></button>
+                <button onClick={() => back()} className={button}><span className="sr-only">Backwards</span><ArrowLeftIcon className="w-6 h-6 text-gray-500 dark:text-gray-400"/></button>
+                <button onClick={() => forward()} className={button}><span className="sr-only">Forwards</span><ArrowRightIcon className="w-6 h-6 text-gray-500 dark:text-gray-400"/></button>
             </div>}
         </Container>
     )

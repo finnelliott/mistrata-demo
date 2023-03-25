@@ -18,14 +18,14 @@ const Benefits: React.FC<Props> = ({ block }) => {
                 <div className={classNames(block.benefits.length % 3 == 0 ? "md:grid-cols-3" : "md:grid-cols-2", "gap-12 grid grid-cols-1")}>
                     {block.benefits.map((item, index) => (
                     <div key={index} className="relative flex flex-col gap-6">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600 sm:shrink-0 border-4 border-primary-50">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600 sm:shrink-0 border-4 border-primary-50 dark:bg-primary-800 dark:text-white dark:border-primary-900">
                         <div className="h-6 w-6 stroke-1.5">
                             <Icon icon={item.icon} aria-hidden="true" />
                         </div>
                         </div>
                         <div className="sm:min-w-0 sm:flex-1">
-                        <p className="text-xl font-medium leading-8 text-gray-900">{item.benefit}</p>
-                        <p className="mt-2 text-base leading-6 text-gray-600">{item.description}</p>
+                        <p className="text-xl font-medium leading-8 text-gray-900 dark:text-white">{item.benefit}</p>
+                        <p className="mt-2 text-base leading-6 text-gray-600 dark:text-gray-400">{item.description}</p>
                         </div>
                     </div>
                     ))}

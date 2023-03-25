@@ -15,9 +15,9 @@ const SectionHeader:React.FC<Props> = ({ preheading, heading, subheading, ctas }
     return (
         <div className="flex w-full flex-col lg:flex-row justify-between items-start lg:items-center pb-16">
             <div className="flex flex-col place-items-start max-w-3xl mb-8 lg:mb-0">
-                {preheading && <div className="text-base font-semibold text-primary-700 text-left mb-3">{preheading}</div>}
-                <h2 className="sm:text-3xl text-2xl text-gray-900 text-left font-semibold">{heading}</h2>
-                {subheading && <div className="text-lg font-normal text-gray-500 mt-5">{subheading}</div>}
+                {preheading && <div className="text-base font-semibold text-primary-700 text-left mb-3 dark:text-primary-300">{preheading}</div>}
+                <h2 className="sm:text-3xl text-2xl text-gray-900 text-left font-semibold dark:text-white">{heading}</h2>
+                {subheading && <div className="text-lg font-normal text-gray-500 mt-5 dark:text-gray-400">{subheading}</div>}
             </div>
             <div className="flex space-x-2">
                 {ctas?.map((cta, index) => (

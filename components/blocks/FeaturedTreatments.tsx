@@ -30,8 +30,8 @@ const FeaturedTreatments: React.FC<Props> = ({ block }) => {
                               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           />
                       </div>
-                      <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis">{item.treatment.title}</h3>
-                      <p className="text-gray-500 mb-6 line-clamp-3 text-ellipsis">{item.treatment.description}</p>
+                      <h3 className="text-2xl font-semibold mb-2 line-clamp-2 text-ellipsis text-gray-900 dark:text-white">{item.treatment.title}</h3>
+                      <p className="text-gray-500 mb-6 line-clamp-3 text-ellipsis dark:text-gray-400">{item.treatment.description}</p>
                       </div>
                   </Link>
               ))}
