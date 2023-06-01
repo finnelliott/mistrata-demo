@@ -68,6 +68,7 @@ const BlockSerializer:React.FC<Props> = ({ page }) => {
                         // @ts-ignore
                         return <LatestBlogPosts block={block} />
                     case 'blog-posts':
+                        // @ts-ignore
                         return <BlogPosts block={block} />
                     case 'featured-treatments':
                         return <FeaturedTreatments block={block} />
