@@ -12,8 +12,8 @@ type Props = {
 
 const OpenPositions = async ({ block }: Props) => {
     const payload = await getPayloadClient();
-    const business = await payload.find({
-        global: 'business',
+    const business = await payload.findGlobal({
+        slug: 'business',
     });
 
     return (

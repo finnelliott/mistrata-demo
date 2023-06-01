@@ -15,16 +15,14 @@ const LatestBlogPosts = async ({ block }: Props) => {
   const data = await payload.find({
     collection: 'blog',
     limit: 3,
-    sort: {
-        publishedAt: 'desc',
-    },
   });
+  const blogs = data.docs;
 
   return (
       <Container>
           <SectionHeader preheading={block.preheading} heading={block.heading} subheading={block.subheading} ctas={block.ctas} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {data.map((post: Blog) => (
+              {blogs.map((post: Blog) => (
                   <Link href={`/blog/${post.slug}`} key={post.title} className="h-full flex flex-col justify-between hover:scale-[99%] transform duration-200">
                       <div>
                       <div className="relative mb-8 aspect-video">

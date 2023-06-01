@@ -10,9 +10,10 @@ type Props = {
 const TeamSlider = async ({ block }: Props) => {
 
     const payload = await getPayloadClient();
-    const team = await payload.find({
+    const data = await payload.find({
         collection: 'team',
     });
+    const team = data.docs;
 
     return (
         <div><TeamSliderLayout block={block} data={team} /></div>

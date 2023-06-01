@@ -5,17 +5,17 @@ import getPayloadClient from "../../payload/payloadClient";
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const payload = await getPayloadClient();
 
-  const pages = await payload.find({
+  const { docs: pages } = await payload.find({
     collection: 'pages',
     limit: 1000
   });
 
-  const blog_posts = await payload.find({
+  const { docs: blog_posts } = await payload.find({
     collection: 'blog',
     limit: 1000
   });
 
-  const treatments = await payload.find({
+  const { docs: treatments } = await payload.find({
     collection: 'treatments',
     limit: 1000
   });

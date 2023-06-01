@@ -10,9 +10,10 @@ type Props = {
 const TeamGrid = async ({ block }: Props) => {
 
     const payload = await getPayloadClient();
-    const team = await payload.find({
+    const data = await payload.find({
         collection: 'team',
     });
+    const team = data.docs;
 
     const sortByIndexThenName = (a: Team, b: Team) => {
         if (a.index && b.index) {

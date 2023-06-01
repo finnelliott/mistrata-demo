@@ -15,6 +15,7 @@ export default function MarketingLayout({
         <main>
         {children}
         </main>
+        {/* @ts-ignore */}
         <FooterNavigation />
       </div>
     </div>

@@ -8,8 +8,9 @@ export default async function FAQs ({ block }: { block: FAQsType }) {
     const data = await payload.find({
         collection: 'team',
     });
+    const team = data.docs;
 
     return (
-        <div><FAQsLayout block={block} data={data} /></div>
+        <div><FAQsLayout block={block} data={team} /></div>
     )
 }

@@ -6,11 +6,11 @@ import getPayloadClient from '../../payload/payloadClient';
 const FooterNavigation = async () => {
   const payload = await getPayloadClient();
 
-  const data = await payload.find({
-    global: 'footer-navigation',
+  const data = await payload.findGlobal({
+    slug: 'footer-navigation',
   });
-  const business = await payload.find({
-    global: 'business',
+  const business = await payload.findGlobal({
+    slug: 'business',
   });
   
     return (
