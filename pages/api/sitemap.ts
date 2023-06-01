@@ -1,10 +1,24 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Blog, Page, Treatment } from "../../payload-types";
+import getPayloadClient from "../../payload/payloadClient";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const pages = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?limit=100`).then((res) => res.json()).then((res) => res.docs)
-    const blog_posts = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/blog?limit=1000`).then((res) => res.json()).then((res) => res.docs)
-    const treatments = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/treatments?limit=100`).then((res) => res.json()).then((res) => res.docs)
+  const payload = await getPayloadClient();
+
+  const pages = await payload.find({
+    collection: 'pages',
+    limit: 1000
+  });
+
+  const blog_posts = await payload.find({
+    collection: 'blog',
+    limit: 1000
+  });
+
+  const treatments = await payload.find({
+    collection: 'treatments',
+    limit: 1000
+  });
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

@@ -1,12 +1,18 @@
 import { use } from 'react'
 import { Business, FooterNavigation as FooterNavigationType } from '../../payload-types';
 import FooterNavigationLayout from './FooterNavigationLayout';
+import getPayloadClient from '../../payload/payloadClient';
 
-const FooterNavigation = () => {
+const FooterNavigation = async () => {
+  const payload = await getPayloadClient();
 
-    const data = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/footer-navigation`).then(res => res.json()).then(data => data as FooterNavigationType))
-    const business = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then(res => res.json()).then(data => data as Business))
-
+  const data = await payload.find({
+    global: 'footer-navigation',
+  });
+  const business = await payload.find({
+    global: 'business',
+  });
+  
     return (
         <div><FooterNavigationLayout data={data} business={business} /></div>
   )

@@ -32,7 +32,7 @@ const adapter = s3Adapter({
 })
 
 export default buildConfig({
-  serverURL: process.env.SERVER_URL,
+  // serverURL: process.env.SERVER_URL,
   admin: {
     user: Users.slug,
     components: {
