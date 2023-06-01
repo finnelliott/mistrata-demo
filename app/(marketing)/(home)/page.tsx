@@ -1,19 +1,26 @@
 import BlockSerializer from "../../../components/shared/BlockSerializer";
-import { use } from "react";
-import getPageBySlug from "../../../lib/getPageBySlug";
 import { notFound } from "next/navigation";
+import getPayloadClient from "../../../payload/payloadClient";
 
-export default function Page() {
-  const page = use(getPageBySlug("home"))
-  if (!page) {
-    return notFound()
-  }
-  if (!page.layout) {
-    return notFound()
-  }
+export default async function Page() {
+  const payload = await getPayloadClient();
+
+  const pages = await payload.find({
+    collection: 'pages',
+    where: {
+      slug: {
+        equals: "home",
+      },
+    }
+  });
+
+  const page = pages.docs[0];
+
+  if (!page) return notFound()
+
   return (
     <>
-      <BlockSerializer page={page as any} />
+      <BlockSerializer page={page} />
     </>
   )
 }

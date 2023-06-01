@@ -78,40 +78,40 @@ export default buildConfig({
         },
       },
     }),
-    seo({
-      collections: [
-        'pages',
-        'blog',
-        'treatments'
-      ],
-      tabbedUI: true,
-      // Add back in once media collection added
-      // uploadsCollection: 'media',
-      generateTitle: async ({ doc }: any) => {
-        if (typeof doc.title.value === 'string' && doc.title.value.length > 0) {
-          const business = await fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/globals/business`).then((res) => res.json())
-          if (business.address.city && business.name) {
-            return `${doc.title.value} | ${business.name} | ${business.address.city}`;
-          } else if (business.name) {
-            return `${doc.title.value} | ${business.name}`;
-          } else {
-            alert("Please add a business name under the global 'business' in order to generate a meta title.");
-          }
-        } else {
-          alert("Please give your page a title in order to generate a meta title.");
-        }
-        return doc.meta.title || null;
-      },
-      generateDescription: async ({ doc }: any) => {
-        const business = await fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/globals/business`).then((res) => res.json());
-        const { name, address: { city } } = business;
-        if (name && city) {
-          // no-cors fetch to avoid CORS error
-          const { meta_description } = await fetch(`https://ai.mistrata.com/api/meta-description?practice_name=${name}&practice_location=${city}&page_title=${doc.title.value}`).then((res) => res.json());
-          return meta_description.replaceAll("\n", "").replaceAll(`"`, "") || null;
-        }
-        return doc.meta.description || null;
-      }
-    }),
+    // seo({
+    //   collections: [
+    //     'pages',
+    //     'blog',
+    //     'treatments'
+    //   ],
+    //   tabbedUI: true,
+    //   // Add back in once media collection added
+    //   // uploadsCollection: 'media',
+    //   generateTitle: async ({ doc }: any) => {
+    //     if (typeof doc.title.value === 'string' && doc.title.value.length > 0) {
+    //       const business = await fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/globals/business`).then((res) => res.json())
+    //       if (business.address.city && business.name) {
+    //         return `${doc.title.value} | ${business.name} | ${business.address.city}`;
+    //       } else if (business.name) {
+    //         return `${doc.title.value} | ${business.name}`;
+    //       } else {
+    //         alert("Please add a business name under the global 'business' in order to generate a meta title.");
+    //       }
+    //     } else {
+    //       alert("Please give your page a title in order to generate a meta title.");
+    //     }
+    //     return doc.meta.title || null;
+    //   },
+    //   generateDescription: async ({ doc }: any) => {
+    //     const business = await fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/globals/business`).then((res) => res.json());
+    //     const { name, address: { city } } = business;
+    //     if (name && city) {
+    //       // no-cors fetch to avoid CORS error
+    //       const { meta_description } = await fetch(`https://ai.mistrata.com/api/meta-description?practice_name=${name}&practice_location=${city}&page_title=${doc.title.value}`).then((res) => res.json());
+    //       return meta_description.replaceAll("\n", "").replaceAll(`"`, "") || null;
+    //     }
+    //     return doc.meta.description || null;
+    //   }
+    // }),
   ]
 });

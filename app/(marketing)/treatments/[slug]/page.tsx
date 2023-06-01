@@ -1,30 +1,36 @@
 import BlockSerializer from "../../../../components/shared/BlockSerializer";
 import { notFound } from "next/navigation"
-import getTreatments from "../../../../lib/getTreatments";
-import getTreatmentBySlug from "../../../../lib/getTreatmentBySlug";
-import { Treatment } from "../../../../payload-types";
+import getPayloadClient from "../../../../payload/payloadClient";
 
 export async function generateStaticParams() {
-  const treatments = await getTreatments();
-  return treatments?.filter((treatment: Treatment) => treatment.layout).map((treatment: Treatment) => (
-    {
-      slug: treatment.slug,
-    }
-  ));
+  const payload = await getPayloadClient();
+
+  const pages = await payload.find({
+    collection: 'treatments',
+    limit: 0,
+  })
+
+  return pages.docs.map(({ slug }: { slug: string }) => ({ slug }))
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const page = await getTreatmentBySlug(params.slug)
-  if (!page) {
-    return notFound()
-  }
-  if (!page.layout) {
-    return notFound()
-  }
+export default async function Page({ params: { slug } }: { params: { slug: string } }) {
+  const payload = await getPayloadClient();
 
+  const pages = await payload.find({
+    collection: 'treatments',
+    where: {
+      slug: {
+        equals: slug,
+      },
+    }
+  });
+
+  const page = pages.docs[0];
+
+  if (!page) return notFound()
   return (
     <>
-      <BlockSerializer page={page as any} />
+      <BlockSerializer page={page} />
     </>
   )
 }

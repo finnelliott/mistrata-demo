@@ -1,29 +1,38 @@
-import { notFound } from "next/navigation";
-import BlockSerializer from "../../../components/shared/BlockSerializer";
-import getPageBySlug from "../../../lib/getPageBySlug";
-import getPages from "../../../lib/getPages";
-import {Page as PageType } from "../../../payload-types";
+import React from 'react';
+import { notFound } from 'next/navigation'
+import { getPayloadClient } from '../../../payload/payloadClient';
+import BlockSerializer from '../../../components/shared/BlockSerializer';
 
-export async function generateStaticParams() {
-  const pages = await getPages();
+const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
+  const payload = await getPayloadClient();
 
-  return pages.filter((page: PageType) => page.slug !== "home").map((page: PageType) => ({
-    slug: page.slug,
-  }));
-}
+  const pages = await payload.find({
+    collection: 'pages',
+    where: {
+      slug: {
+        equals: slug,
+      },
+    }
+  });
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const page = await getPageBySlug(params.slug)
-  if (!page) {
-    return notFound()
-  }
-  if (!page.layout) {
-    return notFound()
-  }
+  const page = pages.docs[0];
+
+  if (!page) return notFound()
+
   return (
-    <>
-      <BlockSerializer page={page as any} />
-    </>
+    <BlockSerializer page={page} />
   )
 }
 
+export async function generateStaticParams() {
+  const payload = await getPayloadClient();
+
+  const pages = await payload.find({
+    collection: 'pages',
+    limit: 0,
+  })
+
+  return pages.docs.map(({ slug }: { slug: string }) => ({ slug }))
+}
+
+export default Page;
