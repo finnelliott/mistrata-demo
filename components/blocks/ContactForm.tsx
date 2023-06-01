@@ -41,7 +41,7 @@ const ContactForm: React.FC<Props> = ({ block }) => {
         let key: keyof typeof data;
         for (key in data) formData.append(key, data[key])
 
-        fetch(`${process.env.VERCEL_URL}/api/contact-form-submissions`, {
+        fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/contact-form-submissions`, {
             method: 'POST',
             mode: 'no-cors',
             body: formData
@@ -119,7 +119,7 @@ const ContactForm: React.FC<Props> = ({ block }) => {
                 </div>
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-square">
                     <Image 
-                        src={process.env.VERCEL_URL + (block.image.url as string)}
+                        src={process.env.NEXT_PUBLIC_VERCEL_URL + (block.image.url as string)}
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 

@@ -21,7 +21,7 @@ export default function BlogPost({ blog_post }: { blog_post: Blog }) {
                     <div className="flex-shrink-0 relative aspect-square w-10">
                         <Image
                             className="rounded-full object-cover"
-                            src={process.env.VERCEL_URL + (blog_post.author.image.url as string)}
+                            src={process.env.NEXT_PUBLIC_VERCEL_URL + (blog_post.author.image.url as string)}
                             alt={blog_post.author.image.alt}
                             fill={true}
                             sizes="40px"
@@ -37,7 +37,7 @@ export default function BlogPost({ blog_post }: { blog_post: Blog }) {
               </div>
               <div className="relative block aspect-video w-full max-w-4xl mx-auto">
                   <Image
-                      src={process.env.VERCEL_URL + (blog_post.image.url as string)}
+                      src={process.env.NEXT_PUBLIC_VERCEL_URL + (blog_post.image.url as string)}
                       alt={blog_post.image.alt}
                       fill={true}
                       className="object-cover"
