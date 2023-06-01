@@ -1,7 +1,7 @@
 "use client";
 import './globals.css'
 import { Inter } from '@next/font/google'
-import { ReactLenis } from '@studio-freight/react-lenis'
+// import { ReactLenis } from '@studio-freight/react-lenis'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,13 +13,13 @@ export default function RootLayout({
 }) {
 
   return (
-    <ReactLenis root>
+    // <ReactLenis root>
     <html lang="en">
       <head />
       <body className={inter.className + " bg-white min-h-screen"} >
         {children}
       </body>
     </html>
-    </ReactLenis>
+    // </ReactLenis>
   )
 }
