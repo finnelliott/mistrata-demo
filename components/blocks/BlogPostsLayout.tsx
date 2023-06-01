@@ -27,7 +27,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
               <div className="col-span-1">
               <div className="relative block aspect-video">
                   <Image
-                      src={"" + (posts[pageIndex*7].image.url as string)}
+                      src={process.env.NEXT_PUBLIC_CMS_URL + (posts[pageIndex*7].image.url as string)}
                       alt={posts[pageIndex*7].image.alt}
                       fill={true}
                       className="object-cover"
@@ -42,7 +42,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                   <div className="flex-shrink-0 relative aspect-square w-10">
                       <Image
                           className="rounded-full object-cover"
-                          src={"" + (posts[pageIndex*7].author.image.url as string)}
+                          src={process.env.NEXT_PUBLIC_CMS_URL + (posts[pageIndex*7].author.image.url as string)}
                           alt={posts[pageIndex*7].author.image.alt}
                           fill={true}
                           sizes="40px"
@@ -68,7 +68,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                 <div>
                 <div className="relative mb-8 aspect-video">
                     <Image
-                        src={"" + (post.image.url as string)}
+                        src={process.env.NEXT_PUBLIC_CMS_URL + (post.image.url as string)}
                         alt={post.image.alt}
                         fill={true}
                         className="object-cover"
@@ -82,7 +82,7 @@ const BlogPostsLayout: React.FC<Props> = ({ block, posts }) => {
                     <div className="flex-shrink-0 relative object-cover aspect-square w-10">
                         <Image
                             className="rounded-full"
-                            src={"" + (post.author.image.url as string)}
+                            src={process.env.NEXT_PUBLIC_CMS_URL + (post.author.image.url as string)}
                             alt={post.author.image.alt}
                             fill={true}
                             sizes="40px"

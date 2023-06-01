@@ -11,7 +11,7 @@ const TeamMemberCard:React.FC<Props> = ({ member }) => {
         <div className="flex flex-col items-start">
             <div className="relative w-full h-full aspect-square overflow-hidden block">
                 <Image
-                    src={"" + (member.image.url as string)}
+                    src={process.env.NEXT_PUBLIC_CMS_URL + (member.image.url as string)}
                     alt={member.image.alt}
                     className="object-cover"
                     fill={true}

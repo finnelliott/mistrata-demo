@@ -4,10 +4,10 @@ import { use } from "react";
 import Container from "../../components/shared/Container";
 
 export default function NotFound() {
-    // const treatments = use(fetch(`${""}/api/pages?where[slug][equals]=${"treatments"}`).then((res) => res.json()).then((res) => res.docs[0]))
-    // const blog = use(fetch(`${""}/api/pages?where[slug][equals]=${"blog"}`).then((res) => res.json()).then((res) => res.docs[0]))
-    // const about = use(fetch(`${""}/api/pages?where[slug][equals]=${"about"}`).then((res) => res.json()).then((res) => res.docs[0]))
-    // const contact = use(fetch(`${""}/api/pages?where[slug][equals]=${"contact"}`).then((res) => res.json()).then((res) => res.docs[0]))
+    // const treatments = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"treatments"}`).then((res) => res.json()).then((res) => res.docs[0]))
+    // const blog = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"blog"}`).then((res) => res.json()).then((res) => res.docs[0]))
+    // const about = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"about"}`).then((res) => res.json()).then((res) => res.docs[0]))
+    // const contact = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/pages?where[slug][equals]=${"contact"}`).then((res) => res.json()).then((res) => res.docs[0]))
 
     // const navigation = []
 
