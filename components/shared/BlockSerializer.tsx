@@ -35,12 +35,10 @@ const BlockSerializer:React.FC<Props> = ({ page }) => {
                     case 'testimonial-slider':
                         return <Testimonials block={block} />
                     case 'team-slider':
-                        // @ts-ignore
                         return <TeamSlider block={block} />
                     case 'cta':
                         return <CTA block={block} />
                     case 'faqs':
-                        // @ts-ignore
                         return <FAQs block={block} />
                     case 'page-header':
                         return <PageHeader block={block} />
@@ -51,10 +49,8 @@ const BlockSerializer:React.FC<Props> = ({ page }) => {
                     case 'locations':
                         return <Locations block={block} />
                     case 'team-grid':
-                        // @ts-ignore
                         return <TeamGrid block={block} />
                     case 'open-positions':
-                        // @ts-ignore
                         return <OpenPositions block={block} />
                     case 'plan-pricing':
                         return <PlanPricing block={block} />
@@ -65,7 +61,6 @@ const BlockSerializer:React.FC<Props> = ({ page }) => {
                     case 'contact-form':
                         return <ContactForm block={block} />
                     case 'latest-blog-posts':
-                        // @ts-ignore
                         return <LatestBlogPosts block={block} />
                     case 'blog-posts':
                         // @ts-ignore
