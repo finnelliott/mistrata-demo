@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import BlogPost from "../../../../components/shared/BlogPost";
 import getPayloadClient from "../../../../payload/payloadClient";
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 
 type Props = {
   params: { slug: string };
@@ -29,7 +29,6 @@ const getPage = async (slug: string) => {
 
 export async function generateMetadata(
   { params, searchParams }: Props,
-  parent?: ResolvingMetadata,
 ): Promise<Metadata> {
   const page = await getPage(params.slug);
  

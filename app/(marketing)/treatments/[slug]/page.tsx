@@ -1,7 +1,7 @@
 import BlockSerializer from "../../../../components/shared/BlockSerializer";
 import { notFound } from "next/navigation"
 import getPayloadClient from "../../../../payload/payloadClient";
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 
 type Props = {
   params: { slug: string };
@@ -29,7 +29,6 @@ const getPage = async (slug: string) => {
 
 export async function generateMetadata(
   { params, searchParams }: Props,
-  parent?: ResolvingMetadata,
 ): Promise<Metadata> {
   const page = await getPage(params.slug);
  
