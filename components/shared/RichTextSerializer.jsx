@@ -120,7 +120,7 @@ const serialize = (children) => children.map((node, i) => {
       return (
         <div className="relative w-full aspect-[4/3] shadow-md bg-white">
               <Image
-                  src={process.env.NEXT_PUBLIC_VERCEL_URL + (node.value.url ?? "")}
+                  src={(node.value.url ?? "")}
                   alt={node.value.alt}
                   fill={true}
                   className="object-cover"

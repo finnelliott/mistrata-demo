@@ -20,7 +20,8 @@ export default async function Page() {
 
   return (
     <>
-      <BlockSerializer page={page} />
+    {JSON.stringify(page)}
+      {/* <BlockSerializer page={page} /> */}
     </>
   )
 }

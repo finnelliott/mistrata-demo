@@ -23,13 +23,14 @@ const adapter = s3Adapter({
   config: {
     endpoint: process.env.NEXT_PUBLIC_S3_ENDPOINT as string,
     region: process.env.SPACES_REGION,
+    forcePathStyle: true,
     credentials: {
       accessKeyId: process.env.SPACES_KEY as string,
       secretAccessKey: process.env.SPACES_SECRET as string,
     },
   },
   bucket: process.env.NEXT_PUBLIC_SPACES_NAME as string,
-})
+});
 
 export default buildConfig({
   // serverURL: process.env.SERVER_URL,
@@ -72,10 +73,10 @@ export default buildConfig({
       collections: {
         'media': {
           prefix: process.env.INTERNAL_CLIENT_ID,
-          disableLocalStorage: true,
-          generateFileURL: ({ filename }: any) => "/media/" + filename,
+          disablePayloadAccessControl: true,
+          // generateFileURL: ({ filename }: any) => "/media/" + filename,
           adapter,
-        },
+        }
       },
     }),
     // seo({

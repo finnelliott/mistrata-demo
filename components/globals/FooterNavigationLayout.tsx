@@ -22,7 +22,7 @@ const FooterNavigationLayout = ({ data, business }: { data: FooterNavigation, bu
                         <span className="sr-only">{business.name}</span>
                         <div className="relative h-12 w-auto overflow-hidden flex items-center">
                             <Image
-                                src={process.env.NEXT_PUBLIC_VERCEL_URL + (business.logo.url as string)}
+                                src={(business.logo.url as string)}
                                 height={40}
                                 width={((business.logo.width as number)/(business.logo.height as number)) * 40}
                                 alt={business.logo.alt}
