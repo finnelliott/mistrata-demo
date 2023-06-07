@@ -2,8 +2,14 @@ import React from 'react';
 import { notFound } from 'next/navigation'
 import { getPayloadClient } from '../../../payload/payloadClient';
 import BlockSerializer from '../../../components/shared/BlockSerializer';
+import { Metadata, ResolvingMetadata } from 'next';
 
-const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+const getPage = async (slug: string) => {
   const payload = await getPayloadClient();
 
   const pages = await payload.find({
@@ -17,7 +23,25 @@ const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
 
   const page = pages.docs[0];
 
-  if (!page) return notFound()
+  if (!page) return notFound();
+
+  return page
+}
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent?: ResolvingMetadata,
+): Promise<Metadata> {
+  const page = await getPage(params.slug);
+ 
+  return {
+    title: page.meta.title,
+    description: page.meta.description,
+  };
+}
+
+const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
+  const page = await getPage(slug);
 
   return (
     <BlockSerializer page={page} />

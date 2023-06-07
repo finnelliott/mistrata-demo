@@ -8,7 +8,6 @@ module.exports = withPayload({
   experimental: {
     appDir: true,
   },
-  output: 'export',
   compress: true,
   images: {
     minimumCacheTTL: 60 * 60 * 24 * 365,
