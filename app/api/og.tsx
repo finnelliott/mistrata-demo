@@ -1,14 +1,10 @@
-import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
+import { ImageResponse } from 'next/server';
+ 
+export const runtime = 'edge';
+ 
+export async function GET(request: Request) {
+    const { searchParams } = new URL(request.url);
 
-export const config = {
-  runtime: 'edge',
-};
-
-export default async function handler(req: NextRequest) {
-  try {
-    const { searchParams } = new URL(req.url);
-    
     const hasTitle = searchParams.has('title');
     const hasLogo = searchParams.has('logo');
     const hasBusiness = searchParams.has('business');
@@ -34,9 +30,9 @@ export default async function handler(req: NextRequest) {
     const height = hasHeight
     ? searchParams.get('height')
     : 630;
-  
-    return new ImageResponse(
-      (
+
+  return new ImageResponse(
+    (
         <div
           style={{
             backgroundColor: 'white',
@@ -69,16 +65,10 @@ export default async function handler(req: NextRequest) {
             </div>
           </div>
         </div>
-      ),
-      {
+    ),
+    {
         width: parseInt(width as string) ?? 1200,
         height: parseInt(height as string) ?? 630,
-      },
-    );
-  } catch (e: any) {
-    console.log(`${e.message}`);
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    });
-  }
+    },
+  );
 }
