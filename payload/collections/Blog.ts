@@ -113,20 +113,6 @@ const Blog: CollectionConfig = {
       };
       fetch(new URL(process.env.PUSH_DEPLOY_URL))
     }],
-    // beforeChange: [
-    //   async ({ data }) => {
-    //     if (!data.meta.title && typeof data.title === 'string' && data.title.length > 0) {
-    //       console.log("Fetching business name from public server")
-    //       const business = await fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/globals/business`).then((res) => res.json())
-    //       if (business.name) {
-    //         return {...data, meta: { title: `${data.title} | ${business.name}` }};
-    //       } else {
-    //         return {...data, meta: { title: `${data.title}` }};
-    //       }
-    //     }
-    //     return data;
-    //   }
-    // ] as CollectionBeforeChangeHook[]
   }
 }
 
