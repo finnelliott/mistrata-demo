@@ -11,6 +11,7 @@ export default function MarketingLayout({
     <div className="relative">
       <DemoBanner />
       <div className="relative z-10">
+        {/* @ts-ignore */}
         <HeaderNavigation />
         <main>
         {children}
