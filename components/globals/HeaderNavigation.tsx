@@ -1,14 +1,20 @@
 import { use } from 'react'
 import { Business, HeaderNavigation as HeaderNavigationType } from '../../payload-types';
 import HeaderNavigationLayout from './HeaderNavigationLayout';
+import getPayloadClient from '../../payload/payloadClient';
 
-const HeaderNavigation = () => {
+const HeaderNavigation = async () => {
+  const payload = await getPayloadClient();
 
-    const data = use(fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/globals/header-navigation`).then(res => res.json()).then(data => data as HeaderNavigationType))
-    const business = use(fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/globals/business`).then(res => res.json()).then(data => data as Business))
+  const data = await payload.findGlobal({
+    slug: 'header-navigation',
+  });
+  const business = await payload.findGlobal({
+    slug: 'business',
+  });
 
-    return (
-        <HeaderNavigationLayout data={data} business={business} />
+  return (
+    <HeaderNavigationLayout data={data} business={business} />
   )
 }
 
