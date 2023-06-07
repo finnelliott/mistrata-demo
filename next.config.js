@@ -22,6 +22,10 @@ module.exports = withPayload({
         hostname: 'localhost',
         port: '3000'
       },
+      {
+        protocol: 'https',
+        hostname: 'ams3.digitaloceanspaces.com',
+      }
     ],
   },
   async redirects() {
