@@ -4,7 +4,6 @@ import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
 import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
 
 import path from 'path';
-// import Examples from './collections/Examples';
 import Users from './collections/Users';
 import Pages from './collections/Pages';
 import Team from './collections/Team';
@@ -33,7 +32,6 @@ const adapter = s3Adapter({
 });
 
 export default buildConfig({
-  // serverURL: process.env.SERVER_URL,
   admin: {
     user: Users.slug,
     components: {
@@ -74,7 +72,6 @@ export default buildConfig({
         'media': {
           prefix: process.env.INTERNAL_CLIENT_ID,
           disablePayloadAccessControl: true,
-          // generateFileURL: ({ filename }: any) => "/media/" + filename,
           adapter,
         }
       },

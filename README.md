@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mistrata Demo - Dentist Website Template
+
+This is a high-quality template codebase for developing performant websites for dentists. It is built using [Payload CMS](https://payloadcms.com/) and [Next.js](https://nextjs.org/), providing a powerful and flexible foundation for your project. A deployed demo of this template can be found [here](https://demo.mistrata.com/).
+
+## Features
+
+- Customizable collections for Users, Pages, Team, Treatments, Blog, Media, and Contact Form Submissions
+- Global settings for Business, Header Navigation, and Footer Navigation
+- SEO optimization using the Payload CMS SEO plugin
+- Cloud storage integration with Digital Ocean Spaces or S3 using the Payload CMS Cloud Storage plugin
+- Custom Logo and Icon components for branding
 
 ## Getting Started
 
-First, run the development server:
+1. Clone this repository:
+
+```bash
+git clone https://github.com/finnelliott/mistrata-demo.git
+```
+
+2. Install dependencies:
+
+```bash
+cd mistrata-demo
+npm install
+```
+
+3. Update `.env.example` with your own API keys and rename it to `.env.local`.
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+You can customize the template by modifying the collections, globals, and components in the `payload.config.js` file. For more information on how to work with Payload CMS, please refer to the [official documentation](https://payloadcms.com/docs).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To deploy your website, follow the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
