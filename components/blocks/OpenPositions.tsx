@@ -4,13 +4,18 @@ import { CalendarIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import Image from "next/image"
 import { Business, OpenPositions as OpenPositionsType } from "../../payload-types"
 import { use } from "react"
+import getPayloadClient from "../../payload/payloadClient"
 
 type Props = {
     block: OpenPositionsType
 }
 
-const OpenPositions: React.FC<Props> = ({ block }) => {
-    const business = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/globals/business`).then(res => res.json()).then(data => data as Business))
+const OpenPositions = async ({ block }: Props) => {
+    const payload = await getPayloadClient();
+    const business = await payload.findGlobal({
+        slug: 'business',
+    });
+
     return (
         <Container>
             <SectionHeader preheading={block.preheading} heading={block.heading} subheading={block.subheading} />
@@ -53,7 +58,7 @@ const OpenPositions: React.FC<Props> = ({ block }) => {
                 </div>
                 <div className="col-span-1 bg-gray-100 w-full relative block aspect-[4/3]">
                     <Image 
-                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
+                        src={(block.image.url as string)}
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 

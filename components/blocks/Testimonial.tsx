@@ -14,7 +14,7 @@ const Testimonial:React.FC<Props> = ({ block }) => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
                 <div className="col-span-1 bg-gray-100 h-full w-full relative block aspect-square">
                     <Image 
-                        src={process.env.NEXT_PUBLIC_CMS_URL + (block.image.url as string)}
+                        src={(block.image.url as string)}
                         alt={block.image.alt}
                         fill={true} 
                         className="object-cover" 

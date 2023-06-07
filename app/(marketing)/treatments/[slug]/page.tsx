@@ -1,30 +1,50 @@
 import BlockSerializer from "../../../../components/shared/BlockSerializer";
 import { notFound } from "next/navigation"
-import getTreatments from "../../../../lib/getTreatments";
-import getTreatmentBySlug from "../../../../lib/getTreatmentBySlug";
-import { Treatment } from "../../../../payload-types";
+import getPayloadClient from "../../../../payload/payloadClient";
+import { Metadata } from 'next';
 
-export async function generateStaticParams() {
-  const treatments = await getTreatments();
-  return treatments?.filter((treatment: Treatment) => treatment.layout).map((treatment: Treatment) => (
-    {
-      slug: treatment.slug,
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+const getPage = async (slug: string) => {
+  const payload = await getPayloadClient();
+
+  const pages = await payload.find({
+    collection: 'treatments',
+    where: {
+      slug: {
+        equals: slug,
+      },
     }
-  ));
+  });
+
+  const page = pages.docs[0];
+
+  if (!page) return notFound();
+
+  return page
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const page = await getTreatmentBySlug(params.slug)
-  if (!page) {
-    return notFound()
-  }
-  if (!page.layout) {
-    return notFound()
-  }
+export async function generateMetadata(
+  { params, searchParams }: Props,
+): Promise<Metadata> {
+  const page = await getPage(params.slug);
+ 
+  return {
+    title: page.meta.title,
+    description: page.meta.description,
+  };
+}
 
+const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
+  const page = await getPage(slug);
   return (
     <>
-      <BlockSerializer page={page as any} />
+      <BlockSerializer page={page} />
     </>
   )
 }
+
+export default Page;

@@ -2,27 +2,32 @@ import Image from "next/image"
 import Link from "next/link"
 import SectionHeader from "../shared/SectionHeader"
 import Container from "../shared/Container"
-import { use } from "react"
 import { Blog, LatestBlogPosts } from "../../payload-types"
+import getPayloadClient from "../../payload/payloadClient"
 
 type Props = {
   block: LatestBlogPosts
 }
 
-const LatestBlogPosts: React.FC<Props> = ({ block }) => {
+const LatestBlogPosts = async ({ block }: Props) => {
 
-  const data = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/blog?sort=-createdAt&limit=3`).then(res => res.json()).then(data => data.docs as Blog[]))
+  const payload = await getPayloadClient();
+  const data = await payload.find({
+    collection: 'blog',
+    limit: 3,
+  });
+  const blogs = data.docs;
 
   return (
       <Container>
           <SectionHeader preheading={block.preheading} heading={block.heading} subheading={block.subheading} ctas={block.ctas} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {data.map((post) => (
+              {blogs.map((post: Blog) => (
                   <Link href={`/blog/${post.slug}`} key={post.title} className="h-full flex flex-col justify-between hover:scale-[99%] transform duration-200">
                       <div>
                       <div className="relative mb-8 aspect-video">
                           <Image
-                              src={process.env.NEXT_PUBLIC_CMS_URL + (post.image.url as string)}
+                              src={(post.image.url as string)}
                               alt={post.image.alt}
                               fill={true}
                               className="object-cover"
@@ -36,7 +41,7 @@ const LatestBlogPosts: React.FC<Props> = ({ block }) => {
                           <div className="flex-shrink-0 relative aspect-square w-10">
                               <Image
                                   className="rounded-full object-cover"
-                                  src={process.env.NEXT_PUBLIC_CMS_URL + (post.author.image.url as string)}
+                                  src={(post.author.image.url as string)}
                                   alt={post.author.image.alt}
                                   fill={true}
                                   sizes="40px"

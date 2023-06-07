@@ -1,17 +1,22 @@
 import { use } from "react";
 import { Team, TeamSlider as TeamSliderType } from "../../payload-types";
 import TeamSliderLayout from "./TeamSliderLayout";
+import getPayloadClient from "../../payload/payloadClient";
 
 type Props = {
     block: TeamSliderType
 }
 
-const TeamSlider: React.FC<Props> = ({ block }) => {
+const TeamSlider = async ({ block }: Props) => {
 
-    const data = use(fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/team?limit=100`).then(res => res.json()).then(data => data.docs as Team[]))
+    const payload = await getPayloadClient();
+    const data = await payload.find({
+        collection: 'team',
+    });
+    const team = data.docs;
 
     return (
-        <div><TeamSliderLayout block={block} data={data} /></div>
+        <div><TeamSliderLayout block={block} data={team} /></div>
     )
     
 }

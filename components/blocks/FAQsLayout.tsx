@@ -72,7 +72,7 @@ const FAQsLayout: React.FC<Props> = ({ block, data }) => {
                     {data.slice(0,3).map((member, index) => (
                         <div key={index} className={(data.length > 1 ? "first:-rotate-12 last:rotate-12 first:w-12 first:h-12 last:w-12 last:h-12 first:z-10 last:z-10 " : "") + "relative w-14 h-14 rounded-full overflow-hidden bg-white border-gray-50 border-2 z-20"}>
                             <Image 
-                                src={process.env.NEXT_PUBLIC_CMS_URL + (member.image.url as string)}
+                                src={(member.image.url as string)}
                                 alt={member.image.alt}
                                 fill={true} 
                                 className="object-cover" 

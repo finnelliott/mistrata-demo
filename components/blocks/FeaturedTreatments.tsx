@@ -23,7 +23,7 @@ const FeaturedTreatments: React.FC<Props> = ({ block }) => {
                       <div>
                       <div className="relative mb-8 aspect-video">
                           <Image
-                              src={process.env.NEXT_PUBLIC_CMS_URL + (item.image.url as string)}
+                              src={(item.image.url as string)}
                               alt={item.image.alt}
                               fill={true}
                               className="object-cover"
