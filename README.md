@@ -46,3 +46,21 @@ To deploy your website, follow the [Next.js deployment documentation](https://ne
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Notes
+
+Duplicate DB with:
+
+```js
+const sourceDB = 'demo';
+const destinationDB = 'new-practice';
+
+// Get a list of all collections in the source database
+const collections = db.getSiblingDB(sourceDB).getCollectionNames();
+
+// For each collection, use the cloneCollection() method to copy it to the destination database
+collections.forEach(collection => {
+    db.getSiblingDB(sourceDB).getCollection(collection).aggregate([{ $match: {} }], { allowDiskUse: true })
+        .forEach(document => db.getSiblingDB(destinationDB).getCollection(collection).insert(document));
+});
+```
