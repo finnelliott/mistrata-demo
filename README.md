@@ -1,66 +1,44 @@
-# Mistrata Demo - Dentist Website Template
+# Next + Payload Serverless Demo
 
-This is a high-quality template codebase for developing performant websites for dentists. It is built using [Payload CMS](https://payloadcms.com/) and [Next.js](https://nextjs.org/), providing a powerful and flexible foundation for your project. A deployed demo of this template can be found [here](https://demo.mistrata.com/).
+This is a demo showing how to utilize `@payloadcms/next-payload` to deploy Payload serverlessly, in the same repo alongside of a NextJS app.
 
-## Features
+### Developing locally
 
-- Customizable collections for Users, Pages, Team, Treatments, Blog, Media, and Contact Form Submissions
-- Global settings for Business, Header Navigation, and Footer Navigation
-- SEO optimization using the Payload CMS SEO plugin
-- Cloud storage integration with Digital Ocean Spaces or S3 using the Payload CMS Cloud Storage plugin
-- Custom Logo and Icon components for branding
+To develop with this package locally, make sure you have the following required software:
 
-## Getting Started
+1. MongoDB
+2. Node + NPM / Yarn
+3. An S3 bucket to store media
 
-1. Clone this repository:
+### Getting started
 
-```bash
-git clone https://github.com/finnelliott/mistrata-demo.git
-```
+Follow the steps below to spin up a local dev environment:
 
-2. Install dependencies:
+1. Clone the repo
+2. Run `yarn` or `npm install`
+3. Run `cp .env.example .env` and fill out all ENV variables as shown
+4. Run `yarn dev` to start up the dev server
 
-```bash
-cd mistrata-demo
-npm install
-```
+From there, you can visit your admin panel via navigating to `http://localhost:3000/admin`. Go ahead and start working!
 
-3. Update `.env.example` with your own API keys and rename it to `.env.local`.
+### Deploying to Vercel
 
-4. Start the development server:
+The only thing you need to do to deploy to Vercel is to ensure that you have a Mongo Atlas database connection string and an S3 bucket available. Fill out the same environment variables that are shown in the `.env.example` with your own values, and then you're good to go!
 
-```bash
-npm run dev
-```
+## Known gotchas
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+#### Cold start delays
 
-## Customization
+With the nature of serverless functions, you are bound to encounter "cold start" delays when your serverless functions spin up for the first time. Once they're "warm", the problem will go away for a few minutes until the functions become dormant again. But there's little that this package can do about that issue, unfortunately.
 
-You can customize the template by modifying the collections, globals, and components in the `payload.config.js` file. For more information on how to work with Payload CMS, please refer to the [official documentation](https://payloadcms.com/docs).
+If you'd like to avoid cold starts with your Payload API, you can deploy on a server-based platform like [Payload Cloud](https://payloadcms.com/new) instead.
 
-## Deployment
+#### Need to sign up for additional vendors
 
-To deploy your website, follow the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
+To deploy Payload on Vercel, you'll need to configure additional vendors for the following:
 
-## Contributing
+- Database (MongoDB Atlas)
+- File storage (AWS S3 or similar) with Payload's [Cloud Storage Plugin](https://github.com/payloadcms/plugin-cloud-storage)
+- Email service (Resend, Sendgrid)
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## Notes
-
-Duplicate DB with:
-
-```js
-const sourceDB = 'demo';
-const destinationDB = 'new-practice';
-
-// Get a list of all collections in the source database
-const collections = db.getSiblingDB(sourceDB).getCollectionNames();
-
-// For each collection, use the cloneCollection() method to copy it to the destination database
-collections.forEach(collection => {
-    db.getSiblingDB(sourceDB).getCollection(collection).aggregate([{ $match: {} }], { allowDiskUse: true })
-        .forEach(document => db.getSiblingDB(destinationDB).getCollection(collection).insert(document));
-});
-```
+If you don't want to go out and sign up for a separate file hosting service, you can just use [Payload Cloud](https://payloadcms.com/new), which gives you file storage, a MongoDB Atlas database, email service by [Resend](https://resend.com), and lots more.

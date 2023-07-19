@@ -1,32 +1,33 @@
-import { CollectionConfig, CollectionAfterChangeHook, CollectionBeforeChangeHook } from 'payload/types';
-import BenefitsBlock from '../blocks/Benefits';
-import BlogPosts from '../blocks/BlogPosts';
-import ContactFormBlock from '../blocks/ContactForm';
-import ContactOptionsBlock from '../blocks/ContactOptions';
-import CTABlock from '../blocks/CTA';
-import FAQsBlock from '../blocks/FAQs';
-import HeroBlock from '../blocks/Hero';
-import LatestBlogPosts from '../blocks/LatestBlogPosts';
-import LocationsBlock from '../blocks/Locations';
-import OpenPositionsBlock from '../blocks/OpenPositions';
-import PageHeaderBlock from '../blocks/PageHeader';
-import PlanPricingBlock from '../blocks/PlanPricing';
-import PricingTableBlock from '../blocks/PricingTable';
-import RichTextBlock from '../blocks/RichText';
-import TeamGridBlock from '../blocks/TeamGrid';
-import TeamSliderBlock from '../blocks/TeamSlider';
-import TestimonialBlock from '../blocks/Testimonial';
-import TestimonialSliderBlock from '../blocks/TestimonialSlider';
-import FeaturedTreatments from '../blocks/FeaturedTreatments';
+import { CollectionConfig } from 'payload/types';
+import { publishedOnly } from '../access/publishedOnly';
+import { CallToAction } from '../blocks/CallToAction';
+import { Content } from '../blocks/Content';
+import { MediaBlock } from '../blocks/Media';
+import { hero } from '../fields/hero';
+import { slugField } from '../fields/slug';
+import { regenerateStaticPage } from '../utilities/regenerateStaticPage';
+import { UIField } from '../components/UITest';
 
-// Example Collection - For reference only, this must be added to payload.config.ts to be used.
-const Pages: CollectionConfig = {
+export const Pages: CollectionConfig = {
   slug: 'pages',
-  access: {
-    read: () => true
-  },
   admin: {
     useAsTitle: 'title',
+    defaultColumns: ['title', 'slug', 'updatedAt'],
+    preview: (doc, { locale }) => {
+      if (doc?.slug) {
+        return `/${doc.slug}${locale ? `?locale=${locale}` : ""}`;
+      }
+
+      return '';
+    },
+  },
+  access: {
+    read: publishedOnly,
+  },
+  hooks: {
+    afterChange: [
+      regenerateStaticPage
+    ]
   },
   fields: [
     {
@@ -35,56 +36,41 @@ const Pages: CollectionConfig = {
       required: true,
     },
     {
-      name: 'slug',
-      type: 'text',
-      required: false,
-      admin: {
-        hidden: true
-      },
-      hooks: {
-        beforeValidate: [
-          ({ data, siblingData }) => {
-            return siblingData.title.toLowerCase().replace(/ /g, '-')
-          }
-        ],
-      },
-    },
-    {
-      name: 'layout',
-      type: 'blocks',
-      minRows: 0,
-      maxRows: 20,
-      blocks: [
-        HeroBlock,
-        BenefitsBlock,
-        TestimonialSliderBlock,
-        TeamSliderBlock,
-        CTABlock,
-        FAQsBlock,
-        PageHeaderBlock,
-        RichTextBlock,
-        TestimonialBlock,
-        LocationsBlock,
-        TeamGridBlock,
-        OpenPositionsBlock,
-        PlanPricingBlock,
-        PricingTableBlock,
-        ContactOptionsBlock,
-        ContactFormBlock,
-        LatestBlogPosts,
-        BlogPosts,
-        FeaturedTreatments
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Hero',
+          fields: [
+            hero,
+          ]
+        },
+        {
+          label: 'Content',
+          fields: [
+            {
+              name: 'layout',
+              type: 'blocks',
+              required: true,
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+              ]
+            }
+          ]
+        }
       ]
+    },
+    slugField(),
+    {
+      name: 'uiTest',
+      type: 'ui',
+      admin: {
+        position: 'sidebar',
+        components: {
+          Field: UIField,
+        }
+      }
     }
-  ],
-  hooks: {
-    afterChange: [
-    () => {
-      if (!process.env.PUSH_DEPLOY_URL) return;
-      fetch(process.env.PUSH_DEPLOY_URL)
-    }
-    ] as CollectionAfterChangeHook[],
-  }
+  ]
 }
-
-export default Pages;
