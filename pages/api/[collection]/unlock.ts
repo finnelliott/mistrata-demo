@@ -1,4 +1,4 @@
-import handler from '@payloadcms/next-payload/dist/handlers/[collection]'
+import handler from '@payloadcms/next-payload/dist/handlers/[collection]/unlock'
 
 export default handler
 

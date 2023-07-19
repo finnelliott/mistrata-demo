@@ -1,6 +1,6 @@
 "use client";
 import './globals.css'
-import { Inter } from '@next/font/google'
+import { Inter } from 'next/font/google'
 // import { ReactLenis } from '@studio-freight/react-lenis'
 
 const inter = Inter({ subsets: ['latin'] })

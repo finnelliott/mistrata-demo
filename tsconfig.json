@@ -20,6 +20,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/shared/RichTextSerializer.jsx", "pages/api/og.js", "components/shared/OGImage.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/shared/RichTextSerializer.jsx", "pages_arch/api/og.js", "components/shared/OGImage.jsx"],
   "exclude": ["node_modules"]
 }
